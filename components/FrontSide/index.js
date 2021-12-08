@@ -25,14 +25,16 @@ export default function FrontSide() {
 
 
         <Stack
-            width={{ base: 320, sm: 370 }}
-            height={{ base: 280, sm: 280 }}
+            width={{ base: 320, sm: 510 }}
+            height={{ base: 280, sm: 350 }}
             margin="auto"
             justifyContent="center"
             alignItems="center"
             bg={colorMode("gray.200", "gray.700")}
             rounded="xl"
             p={10}
+            mt={{ base: 30, sm: 10 }}
+            mb={{ base: 40, sm: 20 }}
             boxShadow="dark-lg"
             cursor="pointer"
 
@@ -74,7 +76,7 @@ export default function FrontSide() {
                     )
                 }
             </Stack>
-            <Stack ml={10}>
+            <Stack pt={{ bae: 2, sm: 5 }} pl={{ base: 250, sm: 350 }}>
                 <Link href="/backside">
                     <a>
                         <Tooltip label="Clicked for more info" aria-label='A tooltip'>

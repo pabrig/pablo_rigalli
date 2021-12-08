@@ -21,16 +21,17 @@ export default function BackSide() {
     return (
 
         <Stack
-            width={{ base: 320, sm: 370 }}
-            height={{ base: 280, sm: 280 }}
+            width={{ base: 320, sm: 510 }}
+            height={{ base: 280, sm: 350 }}
             margin="auto"
-            mb={10}
             alignItems="center"
             bg={colorMode("gray.200", "gray.700")}
             rounded="xl"
             boxShadow="dark-lg"
             cursor="pointer"
 
+            mt={{ base: 30, sm: 10 }}
+            mb={{ base: 40, sm: 20 }}
 
         >
             <Image
@@ -57,7 +58,7 @@ export default function BackSide() {
                 }
 
             </Stack>
-            <Stack >
+            <Stack pt={{ bae: 2, sm: 5 }} pr={{ base: 250, sm: 350 }}>
                 <Link href="/">
                     <a>
                         <Tooltip label="Clicked for Home" aria-label='A tooltip'>
