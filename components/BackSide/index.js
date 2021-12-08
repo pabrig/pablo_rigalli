@@ -28,16 +28,16 @@ export default function BackSide() {
             bg={colorMode("gray.200", "gray.700")}
             rounded="xl"
             boxShadow="dark-lg"
-            cursor="pointer"
 
-            mt={{ base: 30, sm: 10 }}
+
+            mt={{ base: 0, sm: 10 }}
             mb={{ base: 40, sm: 20 }}
 
         >
             <Image
                 src="https://img.icons8.com/clouds/70/000000/technology.png"
                 alt="tech"
-                mt={5} />
+                mt={{ base: 5, sm: 10 }} />
             <Text
                 fontSize="2xl"
                 fontWeight="bold"
@@ -58,7 +58,7 @@ export default function BackSide() {
                 }
 
             </Stack>
-            <Stack pt={{ bae: 2, sm: 5 }} pr={{ base: 250, sm: 350 }}>
+            <Stack pr={{ base: 250, sm: 350 }}>
                 <Link href="/">
                     <a>
                         <Tooltip label="Clicked for Home" aria-label='A tooltip'>

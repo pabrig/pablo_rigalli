@@ -33,10 +33,11 @@ export default function FrontSide() {
             bg={colorMode("gray.200", "gray.700")}
             rounded="xl"
             p={10}
-            mt={{ base: 30, sm: 10 }}
+            mt={{ base: 0, sm: 10 }}
             mb={{ base: 40, sm: 20 }}
-            boxShadow="dark-lg"
-            cursor="pointer"
+            _hover={{ boxShadow: "dark-lg", transition: "0.8s" }}
+
+
 
 
         >
@@ -76,8 +77,8 @@ export default function FrontSide() {
                     )
                 }
             </Stack>
-            <Stack pt={{ bae: 2, sm: 5 }} pl={{ base: 250, sm: 350 }}>
-                <Link href="/backside">
+            <Stack pl={{ base: 250, sm: 350 }}>
+                <Link href="/stack">
                     <a>
                         <Tooltip label="Clicked for more info" aria-label='A tooltip'>
                             <IconButton
