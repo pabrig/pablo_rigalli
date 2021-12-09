@@ -12,11 +12,11 @@ import Fade from 'react-reveal/Fade';
 import { FaArrowLeft } from "react-icons/fa";
 
 
-import { BackData } from '../../utils/constants';
+import { StackData } from '../../utils/constants';
 
 
-export default function BackSide() {
-    const data = BackData;
+export default function MyStack() {
+    const data = StackData;
 
     return (
 
@@ -27,7 +27,7 @@ export default function BackSide() {
             alignItems="center"
             bg={colorMode("gray.200", "gray.700")}
             rounded="xl"
-            boxShadow="dark-lg"
+            _hover={{ boxShadow: "dark-lg", transition: "0.8s" }}
 
 
             mt={{ base: 0, sm: 10 }}

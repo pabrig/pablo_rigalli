@@ -1,12 +1,12 @@
 import { Stack, Text } from "@chakra-ui/react";
 
-import { BackSide } from '../components'
+import { MyStack } from '../components'
 
 
-export default function BackSidePage() {
+export default function MyStackPage() {
     return (
         <Stack>
-            <BackSide />
+            <MyStack />
         </Stack>
     )
 }

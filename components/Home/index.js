@@ -13,14 +13,14 @@ import Fade from 'react-reveal/Fade';
 import { FaArrowRight } from "react-icons/fa";
 
 
-import { FrontData } from '../../utils/constants';
+import { HomeData } from '../../utils/constants';
 
 
 
 
-export default function FrontSide() {
+export default function Home() {
 
-    const data = FrontData;
+    const data = HomeData;
     return (
 
 
@@ -80,7 +80,7 @@ export default function FrontSide() {
             <Stack pl={{ base: 250, sm: 350 }}>
                 <Link href="/stack">
                     <a>
-                        <Tooltip label="Clicked for more info" aria-label='A tooltip'>
+                        <Tooltip label="Click for more info" aria-label='A tooltip'>
                             <IconButton
                                 icon={<FaArrowRight />}
                             >

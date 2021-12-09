@@ -1,12 +1,12 @@
 import { Stack, Text } from "@chakra-ui/react";
 
-import { FrontSide } from '../components'
+import { Home } from '../components'
 
 
-export default function Home() {
+export default function HomePage() {
   return (
     <Stack>
-      <FrontSide />
+      <Home />
     </Stack>
   )
 }

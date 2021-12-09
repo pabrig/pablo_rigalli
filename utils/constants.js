@@ -1,4 +1,4 @@
-export const FrontData = [
+export const HomeData = [
     {
         id: 1,
         href: "https://github.com/pabrig",
@@ -22,7 +22,7 @@ export const FrontData = [
     }
 ];
 
-export const BackData = [
+export const StackData = [
     {
         id: 1,
         image: "https://img.icons8.com/dusk/40/000000/javascript.png",

@@ -3,5 +3,5 @@ export { default as Header } from './Header';
 export { default as Footer } from './Footer';
 
 
-export { default as FrontSide } from './FrontSide';
-export { default as BackSide } from './BackSide';
+export { default as Home } from './Home';
+export { default as MyStack } from './MyStack';

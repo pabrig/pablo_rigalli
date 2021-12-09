@@ -10,7 +10,7 @@ const ColorModeSwitcher = () => {
         <IconButton
             size="lg"
             fontSize="lg"
-            variant="ghost"
+
             borderColor="#ccd0d5"
             margin={4}
             onClick={toggleColorMode}
