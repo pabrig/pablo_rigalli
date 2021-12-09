@@ -22,22 +22,40 @@ export const HomeData = [
     }
 ];
 
+export const AboutData = [
+    {
+        id: 1,
+        description: "Hey there! I'm Pablo.",
+        delay: 200
+    },
+    {
+        id: 2,
+        description: "Front end developer, in ❤️ with React."
+        , delay: 400
+    },
+    {
+        id: 3,
+        description: " Exploring new technologies and developing software solutions and quick hacks."
+        , delay: 600
+    }
+]
+
 export const StackData = [
     {
         id: 1,
-        image: "https://img.icons8.com/dusk/40/000000/javascript.png",
+        image: "https://img.icons8.com/dusk/50/000000/javascript.png",
         alt: "javascript",
         delay: 300
     },
     {
         id: 2,
-        image: "https://img.icons8.com/plasticine/40/000000/react.png",
+        image: "https://img.icons8.com/plasticine/50/000000/react.png",
         alt: "react",
         delay: 600
     },
     {
         id: 3,
-        image: "https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/40/000000/external-typescript-an-open-source-programming-language-developed-and-maintained-by-microsoft-logo-shadow-tal-revivo.png",
+        image: "https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/45/000000/external-typescript-an-open-source-programming-language-developed-and-maintained-by-microsoft-logo-shadow-tal-revivo.png",
         alt: "typescript",
         delay: 900
     },

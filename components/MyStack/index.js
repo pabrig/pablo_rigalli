@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import Fade from 'react-reveal/Fade';
-import { FaArrowLeft } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 
 
 import { StackData } from '../../utils/constants';
@@ -39,7 +39,7 @@ export default function MyStack() {
                 alt="tech"
                 mt={{ base: 5, sm: 10 }} />
             <Text
-                fontSize="2xl"
+                fontSize="xl"
                 fontWeight="bold"
             >
                 My stack
@@ -58,12 +58,12 @@ export default function MyStack() {
                 }
 
             </Stack>
-            <Stack pr={{ base: 250, sm: 350 }}>
+            <Stack >
                 <Link href="/">
                     <a>
-                        <Tooltip label="Clicked for Home" aria-label='A tooltip'>
+                        <Tooltip label="Click for Home" aria-label='A tooltip'>
                             <IconButton
-                                icon={<FaArrowLeft />}
+                                icon={<FaHome />}
                             >
                             </IconButton>
                         </Tooltip>

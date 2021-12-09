@@ -5,3 +5,4 @@ export { default as Footer } from './Footer';
 
 export { default as Home } from './Home';
 export { default as MyStack } from './MyStack';
+export { default as About } from './About';

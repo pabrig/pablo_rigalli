@@ -5,22 +5,23 @@ import {
     Image,
     Tooltip,
     Divider,
-    IconButton
+    IconButton,
+    List, ListItem, ListIcon
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import Fade from 'react-reveal/Fade';
 
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 
-import { HomeData } from '../../utils/constants';
+import { AboutData } from '../../utils/constants';
 
 
 
 
 export default function Home() {
 
-    const data = HomeData;
+    const data = AboutData;
     return (
 
 
@@ -36,49 +37,34 @@ export default function Home() {
             mt={{ base: 0, sm: 10 }}
             mb={{ base: 40, sm: 20 }}
             _hover={{ boxShadow: "dark-lg", transition: "0.8s" }}
-
-
-
-
         >
             <Image
-                src="https://img.icons8.com/external-soft-fill-juicy-fish/50/000000/external-developer-web-developer-soft-fill-soft-fill-juicy-fish.png"
+                src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/60/000000/external-hacker-internet-security-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png"
                 alt="tech"
                 mt={5} />
-
             <Text
                 fontSize="xl"
                 fontWeight="bold">
-                Pablo Rigalli
+                About Me
             </Text>
-            <Text
-                fontSize="lg"
-                fontWeight="300"
+            <List spacing={3} >
+                {data && data.map(about => (
+                    <Fade key={about.id} delay={about.delay}>
+                        <ListItem justifyContent="center" alignItems="center">
+                            <Text
+                                fontSize="lg"
+                                fontWeight="300"
+                                textAlign="center"
+                            >
+                                {about.description}
+                            </Text>
+                        </ListItem>
+                    </Fade>
+                ))}
+            </List>
 
-            >
-                Front End Developer
-            </Text>
-            <Divider />
-            <Stack
-                direction="row"
-                justifyContent="center"
-                alignItems="center">
-                {
-                    data && data.map(front => (
-                        <Fade key={front.id} delay={front.delay}>
-                            <Link href={front.href}>
-                                <a target="_blank">
-                                    <Image src={front.image} alt={front.alt} />
-                                </a>
-                            </Link>
-                        </Fade>
-                    )
-
-                    )
-                }
-            </Stack>
             <Stack pl={{ base: 250, sm: 350 }}>
-                <Link href="/about">
+                <Link href="/stack">
                     <a>
                         <Tooltip label="Click for more info" aria-label='A tooltip'>
                             <IconButton
@@ -88,6 +74,7 @@ export default function Home() {
                         </Tooltip>
                     </a>
                 </Link>
+
             </Stack>
         </Stack>
 
