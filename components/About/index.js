@@ -63,7 +63,7 @@ export default function Home() {
                 ))}
             </List>
 
-            <Stack pl={{ base: 250, sm: 350 }}>
+            <Stack pl={{ base: 250, sm: 350 }} pb={{ base: 10, sm: 0 }}>
                 <Link href="/stack">
                     <a>
                         <Tooltip label="Click for more info" aria-label='A tooltip'>
