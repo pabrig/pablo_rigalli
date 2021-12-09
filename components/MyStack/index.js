@@ -22,7 +22,7 @@ export default function MyStack() {
 
         <Stack
             width={{ base: 320, sm: 510 }}
-            height={{ base: 280, sm: 350 }}
+            height={{ base: 360, sm: 350 }}
             margin="auto"
             alignItems="center"
             bg={colorMode("gray.200", "gray.700")}
@@ -31,7 +31,7 @@ export default function MyStack() {
 
 
             mt={{ base: 0, sm: 10 }}
-            mb={{ base: 40, sm: 20 }}
+            mb={{ base: 55, sm: 20 }}
 
         >
             <Image
@@ -58,8 +58,8 @@ export default function MyStack() {
                 }
 
             </Stack>
-            <Stack >
-                <Link href="/">
+            <Stack pt={{ base: 10 }}>
+                <Link href="/" >
                     <a>
                         <Tooltip label="Click for Home" aria-label='A tooltip'>
                             <IconButton

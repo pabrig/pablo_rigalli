@@ -27,15 +27,15 @@ export default function Home() {
 
         <Stack
             width={{ base: 320, sm: 510 }}
-            height={{ base: 280, sm: 350 }}
+            height={{ base: 360, sm: 350 }}
             margin="auto"
             justifyContent="center"
             alignItems="center"
             bg={colorMode("gray.200", "gray.700")}
             rounded="xl"
-            p={10}
+            p={5}
             mt={{ base: 0, sm: 10 }}
-            mb={{ base: 40, sm: 20 }}
+            mb={{ base: 55, sm: 20 }}
             _hover={{ boxShadow: "dark-lg", transition: "0.8s" }}
         >
             <Image
@@ -47,7 +47,7 @@ export default function Home() {
                 fontWeight="bold">
                 About Me
             </Text>
-            <List spacing={3} >
+            <List spacing={1} >
                 {data && data.map(about => (
                     <Fade key={about.id} delay={about.delay}>
                         <ListItem justifyContent="center" alignItems="center">

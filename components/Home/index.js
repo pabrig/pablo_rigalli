@@ -26,7 +26,7 @@ export default function Home() {
 
         <Stack
             width={{ base: 320, sm: 510 }}
-            height={{ base: 280, sm: 350 }}
+            height={{ base: 360, sm: 350 }}
             margin="auto"
             justifyContent="center"
             alignItems="center"
@@ -34,12 +34,8 @@ export default function Home() {
             rounded="xl"
             p={10}
             mt={{ base: 0, sm: 10 }}
-            mb={{ base: 40, sm: 20 }}
+            mb={{ base: 55, sm: 20 }}
             _hover={{ boxShadow: "dark-lg", transition: "0.8s" }}
-
-
-
-
         >
             <Image
                 src="https://img.icons8.com/external-soft-fill-juicy-fish/50/000000/external-developer-web-developer-soft-fill-soft-fill-juicy-fish.png"
@@ -77,7 +73,7 @@ export default function Home() {
                     )
                 }
             </Stack>
-            <Stack pl={{ base: 250, sm: 350 }}>
+            <Stack pl={{ base: 250, sm: 350 }} pt={{ base: 10 }}>
                 <Link href="/about">
                     <a>
                         <Tooltip label="Click for more info" aria-label='A tooltip'>
