@@ -19,6 +19,13 @@ export const HomeData = [
         image: "https://img.icons8.com/plasticine/60/000000/gmail.png",
         alt: "gmail",
         delay: 900
+    },
+    {
+        id: 4,
+        href: "/documents/pablo_rigalli_cv.pdf",
+        image: "https://img.icons8.com/doodle/45/000000/pdf--v3.png",
+        alt: "download resume",
+        delay: 1200
     }
 ];
 

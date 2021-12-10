@@ -10,19 +10,17 @@ import {
 import Link from 'next/link';
 import Fade from 'react-reveal/Fade';
 
+
 import { FaArrowRight } from "react-icons/fa";
 
 
 import { HomeData } from '../../utils/constants';
 
 
-
-
 export default function Home() {
 
     const data = HomeData;
     return (
-
 
         <Stack
             width={{ base: 320, sm: 510 }}
@@ -36,6 +34,7 @@ export default function Home() {
             mt={{ base: 0, sm: 10 }}
             mb={{ base: 55, sm: 20 }}
             _hover={{ boxShadow: "dark-lg", transition: "0.8s" }}
+
         >
             <Image
                 src="https://img.icons8.com/external-soft-fill-juicy-fish/50/000000/external-developer-web-developer-soft-fill-soft-fill-juicy-fish.png"
@@ -62,9 +61,12 @@ export default function Home() {
                 {
                     data && data.map(front => (
                         <Fade key={front.id} delay={front.delay}>
+
                             <Link href={front.href}>
                                 <a target="_blank">
-                                    <Image src={front.image} alt={front.alt} />
+                                    <Tooltip label={front.alt} aria-label={front.alt}>
+                                        <Image src={front.image} alt={front.alt} />
+                                    </Tooltip>
                                 </a>
                             </Link>
                         </Fade>
@@ -86,8 +88,6 @@ export default function Home() {
                 </Link>
             </Stack>
         </Stack>
-
-
 
     )
 }
