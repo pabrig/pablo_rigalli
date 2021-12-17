@@ -46,7 +46,7 @@ export default function MyStack() {
             </Fade>
           ))}
       </Stack>
-      <Stack pt={{ base: 10 }}>
+      <Stack>
         <Link href="/">
           <a>
             <Tooltip label="home" aria-label="A tooltip">

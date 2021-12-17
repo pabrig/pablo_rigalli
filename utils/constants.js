@@ -58,7 +58,7 @@ export const StackData = [
   },
   {
     id: 2,
-    image: "https://img.icons8.com/plasticine/60/000000/github.png",
+    image: "https://img.icons8.com/plasticine/60/000000/react.png",
     alt: "react",
     delay: 400
   },
@@ -66,6 +66,18 @@ export const StackData = [
     id: 3,
     image:
       "https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/45/000000/external-typescript-an-open-source-programming-language-developed-and-maintained-by-microsoft-logo-shadow-tal-revivo.png",
+    alt: "typescript",
+    delay: 800
+  },
+  {
+    id: 4,
+    image: "../assets/icons8-git-48.png",
+    alt: "typescript",
+    delay: 800
+  },
+  {
+    id: 5,
+    image: "../assets/icons8-amazon-aws-48.png",
     alt: "typescript",
     delay: 800
   }
