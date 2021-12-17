@@ -60,12 +60,21 @@ export default function Home() {
                 alignItems="center">
                 {
                     data && data.map(front => (
-                        <Fade key={front.id} delay={front.delay}>
+                        <Fade
+                            key={front.id}
+                            delay={front.delay}>
 
-                            <Link href={front.href}>
-                                <a target="_blank">
-                                    <Tooltip label={front.alt} aria-label={front.alt}>
-                                        <Image src={front.image} alt={front.alt} />
+                            <Link
+                                href={front.href}>
+                                <a
+                                    target="_blank">
+                                    <Tooltip
+                                        label={front.alt}
+                                        aria-label={front.alt}>
+                                        <Image
+                                            src={front.image}
+                                            alt={front.alt}
+                                            hover={{ transform: "scale(0.9" }} />
                                     </Tooltip>
                                 </a>
                             </Link>
@@ -78,7 +87,7 @@ export default function Home() {
             <Stack pl={{ base: 250, sm: 350 }} pt={{ base: 10 }}>
                 <Link href="/about">
                     <a>
-                        <Tooltip label="Click for more info" aria-label='A tooltip'>
+                        <Tooltip label="more info" aria-label='A tooltip'>
                             <IconButton
                                 icon={<FaArrowRight />}
                             >

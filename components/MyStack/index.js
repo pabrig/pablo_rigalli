@@ -42,7 +42,7 @@ export default function MyStack() {
                 fontSize="xl"
                 fontWeight="bold"
             >
-                My stack
+                My Stack
             </Text>
 
 
@@ -61,7 +61,7 @@ export default function MyStack() {
             <Stack pt={{ base: 10 }}>
                 <Link href="/" >
                     <a>
-                        <Tooltip label="Click for Home" aria-label='A tooltip'>
+                        <Tooltip label="home" aria-label='A tooltip'>
                             <IconButton
                                 icon={<FaHome />}
                             >

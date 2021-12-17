@@ -10,7 +10,6 @@ import {
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import Fade from 'react-reveal/Fade';
-
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 
@@ -18,12 +17,12 @@ import { AboutData } from '../../utils/constants';
 
 
 
-
 export default function Home() {
-
+    const initial = { opacity: 0, rotateY: 0 };
+    const animate = { opacity: 1, rotateY: 180 };
+    const exit = { opacity: 1, rotateY: 180 };
     const data = AboutData;
     return (
-
 
         <Stack
             width={{ base: 320, sm: 510 }}
@@ -66,7 +65,7 @@ export default function Home() {
             <Stack pl={{ base: 250, sm: 350 }} pb={{ base: 10, sm: 0 }}>
                 <Link href="/stack">
                     <a>
-                        <Tooltip label="Click for more info" aria-label='A tooltip'>
+                        <Tooltip label="more info" aria-label='A tooltip'>
                             <IconButton
                                 icon={<FaArrowRight />}
                             >
@@ -77,7 +76,6 @@ export default function Home() {
 
             </Stack>
         </Stack>
-
 
 
     )

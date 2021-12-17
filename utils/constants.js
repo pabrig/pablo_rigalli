@@ -22,7 +22,7 @@ export const HomeData = [
     },
     {
         id: 4,
-        href: "/documents/pablo_rigalli_cv.pdf",
+        href: "/documents/pablo_rigalli.pdf",
         image: "https://img.icons8.com/doodle/45/000000/pdf--v3.png",
         alt: "download resume",
         delay: 1200
