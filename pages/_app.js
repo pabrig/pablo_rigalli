@@ -1,28 +1,25 @@
-import React from 'react';
-import { Box, ChakraProvider, Container } from "@chakra-ui/react";
-import { Header, Footer } from '../components';
-
-
-
+import React from "react";
+import { Box, ChakraProvider } from "@chakra-ui/react";
+import { Header, Footer } from "../components";
 
 function MyApp({ Component, pageProps }) {
   return (
     <Box>
-
       <ChakraProvider>
-        <Container
+        <Box
           boxShadow="md"
+          display="grid"
           padding={5}
           marginY={5}
           height="100vh"
-          maxWidth="container.xl"
           justifyContent="center"
           alignItems="center"
-          borderRadius={15}>
+          borderRadius={15}
+        >
           <Header />
-          <Component  {...pageProps} />
+          <Component {...pageProps} />
           <Footer />
-        </Container>
+        </Box>
       </ChakraProvider>
     </Box>
   );
