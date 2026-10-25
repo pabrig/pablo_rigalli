@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>LinkedIn banner — Pablo Rigalli</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* LinkedIn-only: slightly lifted vs site hero (UI compression reads darker). */
+      html,
+      body {
+        width: 1584px;
+        height: 396px;
+        overflow: hidden;
+        background: #0c0b14;
+      }
+
+      .banner {
+        position: relative;
+        width: 1584px;
+        height: 396px;
+        background: #0c0b14;
+        font-family: system-ui, sans-serif;
+        color: #e8e4f5;
+      }
+
+      .stage {
+        position: absolute;
+        inset: 8px 12px 10px;
+        border-radius: 22px;
+        background: linear-gradient(165deg, #14121f 0%, #0f0e18 45%, #12101c 100%);
+        overflow: hidden;
+        filter: brightness(1.08) saturate(1.05);
+      }
+
+      .lift {
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        background: radial-gradient(
+          ellipse 75% 85% at 58% 42%,
+          rgba(139, 122, 245, 0.09) 0%,
+          rgba(90, 67, 239, 0.04) 38%,
+          transparent 72%
+        );
+      }
+
+      .grain {
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+        z-index: 50;
+        opacity: 0.038;
+        mix-blend-mode: overlay;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+
+      .grid {
+        position: absolute;
+        inset: -40px -20px;
+        opacity: 0.38;
+        background-image:
+          linear-gradient(to right, rgba(221, 217, 239, 0.11) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(221, 217, 239, 0.11) 1px, transparent 1px);
+        background-size: 56px 56px;
+        mask-image: radial-gradient(ellipse 70% 70% at 58% 48%, #000 25%, transparent 78%);
+      }
+
+      .grid-far {
+        opacity: 0.26;
+        transform: scale(1.08);
+      }
+
+      .vignette {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 92% 82% at 58% 46%, transparent 42%, rgba(12, 11, 20, 0.38) 100%);
+        pointer-events: none;
+        z-index: 4;
+      }
+
+      .safe-left {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 300px;
+        height: 200px;
+        background: linear-gradient(135deg, rgba(12, 11, 20, 0.55) 0%, transparent 78%);
+        z-index: 5;
+        pointer-events: none;
+      }
+
+      .glow {
+        position: absolute;
+        left: 58%;
+        top: 46%;
+        width: 520px;
+        height: 240px;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        background: rgba(90, 67, 239, 0.22);
+        filter: blur(70px);
+        z-index: 1;
+      }
+
+      .beam {
+        position: absolute;
+        left: 58%;
+        top: 6%;
+        width: 140px;
+        height: 420px;
+        transform: translateX(-50%) rotateZ(-4deg);
+        transform-origin: 50% 0%;
+        pointer-events: none;
+        z-index: 2;
+      }
+
+      .beam::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 50% 80% at 50% 8%,
+          rgba(168, 155, 255, 0.28),
+          rgba(90, 67, 239, 0.2) 32%,
+          rgba(70, 58, 140, 0.1) 62%,
+          transparent 82%
+        );
+        filter: blur(18px);
+      }
+
+      .beam::after {
+        content: "";
+        position: absolute;
+        inset: 2% 22% 0;
+        background: linear-gradient(
+          180deg,
+          rgba(168, 155, 255, 0.16),
+          rgba(90, 67, 239, 0.14) 34%,
+          transparent 88%
+        );
+        filter: blur(12px);
+      }
+
+      .scene {
+        position: absolute;
+        left: 58%;
+        top: 52%;
+        width: 320px;
+        height: 320px;
+        transform: translate(-50%, -50%);
+        perspective: 1400px;
+        perspective-origin: 50% 40%;
+        z-index: 3;
+      }
+
+      .rig {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transform: rotateX(54deg) rotateZ(-34deg) scale(0.92);
+      }
+
+      .plane {
+        position: absolute;
+        inset: 0;
+        border-radius: 18px;
+        border: 1px solid rgba(221, 217, 239, 0.12);
+        transform-style: preserve-3d;
+      }
+
+      .p0 {
+        transform: translateZ(0px);
+        background: #12101c;
+      }
+
+      .p1 {
+        transform: translateZ(42px);
+        background: rgba(18, 16, 32, 0.94);
+      }
+
+      .p2 {
+        transform: translateZ(84px);
+        background: rgba(22, 20, 38, 0.94);
+      }
+
+      .p3 {
+        transform: translateZ(126px);
+        background: rgba(90, 67, 239, 0.09);
+        border-color: rgba(120, 100, 245, 0.45);
+      }
+
+      .dots {
+        position: absolute;
+        inset: 16px;
+        border-radius: 12px;
+        opacity: 0.62;
+        background-image: radial-gradient(#8a8899 1px, transparent 1px);
+        background-size: 14px 14px;
+      }
+
+      .iso {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .wireframe {
+        position: absolute;
+        inset: 18px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 8px;
+      }
+
+      .wireframe div {
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .wireframe .w-top {
+        grid-column: span 3;
+        background: rgba(255, 255, 255, 0.11);
+      }
+
+      .wireframe .w-side {
+        grid-row: span 3;
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .wireframe .w-main {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+
+      .wireframe .w-accent {
+        background: rgba(90, 67, 239, 0.45);
+      }
+
+      .orbit {
+        position: absolute;
+        inset: 15%;
+        border-radius: 50%;
+        border: 1px dashed rgba(90, 67, 239, 0.4);
+      }
+
+      .orbit-inner {
+        position: absolute;
+        inset: 22%;
+        border-radius: 50%;
+        border: 1px solid rgba(90, 67, 239, 0.25);
+      }
+
+      .orbit-dot {
+        position: absolute;
+        top: -4px;
+        left: 50%;
+        width: 8px;
+        height: 8px;
+        margin-left: -4px;
+        border-radius: 50%;
+        background: #5a43ef;
+        box-shadow: 0 0 8px 1px rgba(90, 67, 239, 0.45);
+      }
+
+      .spark-wrap {
+        position: absolute;
+        left: 50%;
+        top: 42%;
+        width: 88px;
+        height: 88px;
+        transform: translate(-50%, -50%) translateZ(168px);
+        z-index: 6;
+      }
+
+      .spark-glow {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: rgba(120, 100, 255, 0.35);
+        filter: blur(16px);
+        opacity: 0.58;
+      }
+
+      .spark {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .packet {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #8b7af5;
+        box-shadow: 0 0 12px 2px rgba(90, 67, 239, 0.5);
+        transform: translateZ(140px);
+      }
+
+      .chip {
+        position: absolute;
+        padding: 6px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(221, 217, 239, 0.14);
+        background: rgba(22, 20, 36, 0.82);
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 11px;
+        color: #9a97ad;
+        z-index: 8;
+        letter-spacing: 0.02em;
+      }
+
+      .label {
+        position: absolute;
+        right: -8px;
+        bottom: 10px;
+        transform: translateX(100%);
+        font-size: 9px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: #8a8799;
+        white-space: nowrap;
+      }
+
+      .label.accent {
+        color: #7b68f5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="banner">
+      <div class="stage">
+        <div class="grid grid-far"></div>
+        <div class="grid"></div>
+        <div class="lift"></div>
+        <div class="glow"></div>
+        <div class="beam"></div>
+
+        <div class="scene">
+          <div class="rig">
+            <div class="plane p0">
+              <div class="dots"></div>
+              <span class="label">— Architecture</span>
+            </div>
+            <div class="plane p1">
+              <svg class="iso" viewBox="0 0 100 100" aria-hidden="true">
+                <path
+                  d="M14 30 H50 V70 H86 M14 70 H34 V30 M66 30 V70"
+                  fill="none"
+                  stroke="#8a8899"
+                  stroke-width="0.6"
+                />
+                <circle cx="14" cy="30" r="1.6" fill="#ddd9ef" />
+                <circle cx="50" cy="30" r="1.6" fill="#ddd9ef" />
+                <circle cx="50" cy="70" r="1.6" fill="#ddd9ef" />
+                <circle cx="86" cy="70" r="1.6" fill="#ddd9ef" />
+                <circle cx="14" cy="70" r="1.6" fill="#ddd9ef" />
+                <circle cx="34" cy="30" r="1.6" fill="#ddd9ef" />
+                <circle cx="66" cy="30" r="1.6" fill="#ddd9ef" />
+              </svg>
+              <span class="label">— APIs</span>
+            </div>
+            <div class="plane p2">
+              <div class="wireframe">
+                <div class="w-top"></div>
+                <div class="w-side"></div>
+                <div class="w-main"></div>
+                <div></div>
+                <div class="w-accent"></div>
+              </div>
+              <span class="label">— Experience</span>
+            </div>
+            <div class="plane p3">
+              <div class="orbit"></div>
+              <div class="orbit-inner"><span class="orbit-dot"></span></div>
+              <span class="label accent">— Product</span>
+            </div>
+
+            <div class="spark-wrap">
+              <div class="spark-glow"></div>
+              <svg class="spark" viewBox="0 0 100 100" aria-hidden="true">
+                <defs>
+                  <linearGradient id="spark-fill" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#c8bfff" />
+                    <stop offset="55%" stop-color="#7565e8" />
+                    <stop offset="100%" stop-color="#5a43ef" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M50 4 C53 34 66 47 96 50 C66 53 53 66 50 96 C47 66 34 53 4 50 C34 47 47 34 50 4Z"
+                  fill="url(#spark-fill)"
+                />
+                <path
+                  d="M80 14 C80.8 19 81 19.2 86 20 C81 20.8 80.8 21 80 26 C79.2 21 79 20.8 74 20 C79 19.2 79.2 19 80 14Z"
+                  fill="#9a8ee6"
+                  opacity="0.8"
+                />
+              </svg>
+            </div>
+
+            <span class="packet" style="left: 14%; top: 30%"></span>
+            <span class="packet" style="left: 50%; top: 68%"></span>
+            <span class="packet" style="left: 82%; top: 65%"></span>
+          </div>
+        </div>
+
+        <span class="chip" style="left: 42%; top: 18%; opacity: 0.72">React</span>
+        <span class="chip" style="left: 48%; top: 72%; opacity: 0.55">Next.js</span>
+        <span class="chip" style="left: 68%; top: 22%; opacity: 0.78">TypeScript</span>
+        <span class="chip" style="left: 74%; top: 68%; opacity: 0.62">GraphQL</span>
+        <span class="chip" style="left: 80%; top: 14%; opacity: 0.48">MCP</span>
+
+        <div class="vignette"></div>
+        <div class="safe-left"></div>
+        <div class="grain"></div>
+      </div>
+    </div>
+  </body>
+</html>
