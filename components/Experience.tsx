@@ -40,7 +40,7 @@ function RoleCard({
   const borderColor = useTransform(
     proximity,
     [0.6, 1],
-    ["rgba(221,217,239,0.06)", "rgba(90,67,239,0.22)"]
+    ["rgba(255,255,255,0.06)", "rgba(109,98,232,0.18)"]
   );
 
   return (

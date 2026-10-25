@@ -88,7 +88,7 @@ function Packet({
     <motion.span
       aria-hidden
       style={{ z, opacity, scale, left, top }}
-      className="absolute -ml-[3px] -mt-[3px] h-1.5 w-1.5 rounded-full bg-[#8b7af5] shadow-[0_0_12px_2px_rgba(90,67,239,0.5)]"
+      className="absolute -ml-[3px] -mt-[3px] h-1.5 w-1.5 rounded-full bg-accent-soft shadow-[0_0_10px_2px_var(--accent-glow)]"
     />
   );
 }
@@ -129,17 +129,17 @@ function Beam({
     >
       <motion.div
         style={{ opacity: veil }}
-        className="absolute inset-x-0 inset-y-0 bg-[radial-gradient(ellipse_50%_80%_at_50%_8%,rgba(139,122,245,0.16),rgba(90,67,239,0.12)_32%,rgba(45,35,110,0.06)_62%,transparent_82%)] blur-2xl"
+        className="absolute inset-x-0 inset-y-0 bg-[radial-gradient(ellipse_50%_80%_at_50%_8%,rgba(130,120,235,0.1),rgba(109,98,232,0.07)_32%,rgba(60,58,80,0.05)_62%,transparent_82%)] blur-2xl"
       />
       <motion.div
         style={{ opacity: veil }}
-        className="absolute inset-x-[18%] inset-y-[2%] bg-[linear-gradient(180deg,rgba(139,122,245,0.1),rgba(90,67,239,0.1)_34%,transparent_88%)] blur-xl"
+        className="absolute inset-x-[18%] inset-y-[2%] bg-[linear-gradient(180deg,rgba(130,120,235,0.07),rgba(109,98,232,0.06)_34%,transparent_88%)] blur-xl"
       />
-      <div className="absolute inset-x-[36%] inset-y-[6%] bg-[linear-gradient(180deg,rgba(107,87,232,0.08),rgba(90,67,239,0.06)_40%,transparent)] blur-md" />
+      <div className="absolute inset-x-[36%] inset-y-[6%] bg-[linear-gradient(180deg,rgba(107,87,232,0.05),rgba(109,98,232,0.04)_40%,transparent)] blur-md" />
       {!reduceMotion && (
         <motion.span
           style={{ top: travel }}
-          className="absolute left-1/2 h-28 w-20 -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(139,122,245,0.22),rgba(90,67,239,0.12)_45%,transparent)] blur-xl"
+          className="absolute left-1/2 h-28 w-20 -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(130,120,235,0.14),rgba(109,98,232,0.08)_45%,transparent)] blur-xl"
         />
       )}
     </motion.div>
@@ -337,7 +337,7 @@ export function Hero() {
   );
   const rigScale = useTransform(intro, [0, 1], [0.82, 1]);
   const glow = useTransform(scrollYProgress, [0, 0.6], [0.2, 0.52]);
-  const spotlight = useMotionTemplate`radial-gradient(520px circle at ${lightX}px ${lightY}px, rgba(90,67,239,0.07), transparent 62%)`;
+  const spotlight = useMotionTemplate`radial-gradient(520px circle at ${lightX}px ${lightY}px, rgba(109, 98, 232, 0.06), transparent 62%)`;
 
   const stageScale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
   const stageY = useTransform(scrollYProgress, [0, 1], [0, 140]);
@@ -450,18 +450,18 @@ export function Hero() {
                     style={{ rotateX, rotateZ, scale: rigScale }}
                     className="preserve-3d relative h-full w-full"
                   >
-                    <Plane index={0} depth={depth} className="border border-line bg-[#05050c]">
+                    <Plane index={0} depth={depth} className="border border-line bg-panel">
                       <div
-                        className="absolute inset-4 rounded-[14px] opacity-50"
+                        className="absolute inset-4 rounded-[14px] opacity-40"
                         style={{
-                          backgroundImage: "radial-gradient(#6e6c7e 1px, transparent 1px)",
+                          backgroundImage: "radial-gradient(var(--muted) 1px, transparent 1px)",
                           backgroundSize: "14px 14px"
                         }}
                       />
                       <Label text={layers[3]} />
                     </Plane>
 
-                    <Plane index={1} depth={depth} className="border border-line bg-[#070612]/92">
+                    <Plane index={1} depth={depth} className="border border-line bg-elevated/95">
                       <svg
                         className="absolute inset-0 h-full w-full"
                         viewBox="0 0 100 100"
@@ -470,7 +470,7 @@ export function Hero() {
                         <path
                           d="M14 30 H50 V70 H86 M14 70 H34 V30 M66 30 V70"
                           fill="none"
-                          stroke="#8a8899"
+                          stroke="var(--muted)"
                           strokeWidth="0.6"
                         />
                         {[
@@ -482,19 +482,19 @@ export function Hero() {
                           [34, 30],
                           [66, 30]
                         ].map(([cx, cy]) => (
-                          <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="1.6" fill="#ddd9ef" />
+                          <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="1.6" fill="var(--ink)" />
                         ))}
                       </svg>
                       <Label text={layers[2]} />
                     </Plane>
 
-                    <Plane index={2} depth={depth} className="border border-line bg-[#0a0914]/92">
+                    <Plane index={2} depth={depth} className="border border-line bg-elevated/90">
                       <div className="absolute inset-5 grid grid-cols-3 grid-rows-4 gap-2">
-                        <div className="col-span-3 rounded-md bg-white/[0.07]" />
-                        <div className="row-span-3 rounded-md bg-white/[0.04]" />
-                        <div className="col-span-2 row-span-2 rounded-md bg-white/[0.05]" />
-                        <div className="rounded-md bg-white/[0.04]" />
-                        <div className="rounded-md bg-accent/45" />
+                        <div className="col-span-3 rounded-md bg-white/[0.06]" />
+                        <div className="row-span-3 rounded-md bg-white/[0.035]" />
+                        <div className="col-span-2 row-span-2 rounded-md bg-white/[0.045]" />
+                        <div className="rounded-md bg-white/[0.035]" />
+                        <div className="rounded-md bg-accent/30" />
                       </div>
                       <Label text={layers[1]} />
                     </Plane>
@@ -516,7 +516,7 @@ export function Hero() {
                             animate={reduceMotion ? undefined : { rotate: -360 }}
                             transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
                           >
-                            <span className="absolute -top-1 left-1/2 -ml-1 h-2 w-2 rounded-full bg-accent shadow-[0_0_8px_1px_rgba(90,67,239,0.45)]" />
+                            <span className="absolute -top-1 left-1/2 -ml-1 h-2 w-2 rounded-full bg-accent shadow-[0_0_8px_1px_var(--accent-glow)]" />
                           </motion.div>
                           <div className="absolute inset-[38%] rounded-full bg-accent/18 blur-md" />
                         </div>
@@ -556,7 +556,7 @@ export function Hero() {
                       href={meetUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="rounded-full bg-accent px-6 py-3 text-[12px] font-medium uppercase tracking-[0.14em] text-canvas transition hover:brightness-110"
+                      className="rounded-full bg-accent px-6 py-3 text-[12px] font-medium uppercase tracking-[0.14em] text-on-accent transition hover:brightness-110"
                     >
                       {t.hero.scheduleMeet[lang]}
                     </a>
@@ -566,7 +566,7 @@ export function Hero() {
                     className={`rounded-full px-6 py-3 text-[12px] font-medium uppercase tracking-[0.14em] backdrop-blur transition ${
                       meetUrl
                         ? "bg-white/[0.04] hover:bg-white/[0.12]"
-                        : "bg-accent text-canvas hover:brightness-110"
+                        : "bg-accent text-on-accent hover:brightness-110"
                     }`}
                   >
                     {t.hero.primary[lang]}

@@ -9,14 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#ddd9ef",
-        muted: "#6e6c7e",
-        line: "rgba(221, 217, 239, 0.065)",
-        accent: "#5a43ef",
-        soft: "#8f87b8",
-        canvas: "#020208",
-        elevated: "#060510",
-        panel: "#04030c"
+        ink: "var(--ink)",
+        muted: "var(--muted)",
+        line: "var(--line)",
+        accent: "var(--accent)",
+        soft: "var(--soft)",
+        canvas: "var(--canvas)",
+        elevated: "var(--elevated)",
+        panel: "var(--panel)",
+        "on-accent": "var(--on-accent)"
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],

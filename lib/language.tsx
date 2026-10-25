@@ -6,7 +6,7 @@ import {
   useEffect,
   useMemo,
   useState,
-  type ReactNode
+  type ReactNode,
 } from "react";
 import { copy, profile, type Lang } from "./content";
 
@@ -33,13 +33,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     document.documentElement.lang = next === "es" ? "es" : "en";
   };
 
-  const value = useMemo(
-    () => ({ lang, setLang, t: copy, profile }),
-    [lang]
-  );
+  const value = useMemo(() => ({ lang, setLang, t: copy, profile }), [lang]);
 
   return (
-    <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>
+    <LanguageContext.Provider value={value}>
+      {children}
+    </LanguageContext.Provider>
   );
 }
 

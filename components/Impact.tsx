@@ -30,7 +30,7 @@ function ProductVisual({ animate }: { animate: boolean }) {
       {animate && (
         <motion.span
           aria-hidden
-          className="absolute left-1/2 top-[22%] h-2 w-2 -ml-1 rounded-full bg-accent shadow-[0_0_10px_2px_rgba(90,67,239,0.45)]"
+          className="absolute left-1/2 top-[22%] h-2 w-2 -ml-1 rounded-full bg-accent shadow-[0_0_10px_2px_var(--accent-glow)]"
           animate={{ y: [0, 92, 0], opacity: [0, 1, 1, 0] }}
           transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -134,7 +134,7 @@ function ImpactCard({ item, index }: { item: Item; index: number }) {
   const reduceMotion = useReducedMotion() ?? false;
   const lightX = useMotionValue(-500);
   const lightY = useMotionValue(-500);
-  const spotlight = useMotionTemplate`radial-gradient(380px circle at ${lightX}px ${lightY}px, rgba(90,67,239,0.07), transparent 72%)`;
+  const spotlight = useMotionTemplate`radial-gradient(380px circle at ${lightX}px ${lightY}px, rgba(109, 98, 232, 0.08), transparent 72%)`;
   const Visual = visuals[item.id as keyof typeof visuals] ?? ProductVisual;
 
   return (
@@ -152,7 +152,7 @@ function ImpactCard({ item, index }: { item: Item; index: number }) {
         lightX.set(-500);
         lightY.set(-500);
       }}
-      className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-line bg-[#080712] p-3 transition-colors duration-500 hover:border-accent/35"
+      className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-line bg-elevated p-3 transition-colors duration-500 hover:border-accent/35"
     >
       <motion.div
         aria-hidden
@@ -198,7 +198,7 @@ export function Impact() {
     <section id="aporte" className="relative overflow-hidden px-5 py-24 md:px-10 md:py-32">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-[6%] h-[70%] bg-[radial-gradient(ellipse_50%_45%_at_50%_45%,rgba(90,67,239,0.05),transparent_72%)]"
+        className="pointer-events-none absolute inset-x-0 top-[6%] h-[70%] bg-[radial-gradient(ellipse_50%_45%_at_50%_45%,color-mix(in_srgb,var(--accent)_6%,transparent),transparent_72%)]"
       />
 
       <div className="relative mx-auto max-w-[1400px]">

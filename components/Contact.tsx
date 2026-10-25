@@ -49,7 +49,7 @@ export function Contact() {
               href={meetUrl}
               target="_blank"
               rel="noreferrer"
-              className="rounded-full bg-accent px-6 py-3 text-[12px] font-medium uppercase tracking-[0.14em] text-canvas transition hover:brightness-110"
+              className="rounded-full bg-accent px-6 py-3 text-[12px] font-medium uppercase tracking-[0.14em] text-on-accent transition hover:brightness-110"
             >
               {t.contact.scheduleMeet[lang]}
             </a>
