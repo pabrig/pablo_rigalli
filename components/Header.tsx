@@ -33,10 +33,11 @@ export function Header() {
   const meetUrl = bookingUrl();
 
   const links = [
-    { href: "#aporte", label: t.nav.work[lang] },
-    { href: "#trayectoria", label: t.nav.experience[lang] },
-    { href: "#stack", label: t.nav.stack[lang] },
-    { href: "#contacto", label: t.nav.contact[lang] }
+    { href: "/#aporte", label: t.nav.work[lang] },
+    { href: "/#trayectoria", label: t.nav.experience[lang] },
+    { href: "/#stack", label: t.nav.stack[lang] },
+    { href: "/blog", label: t.nav.blog[lang] },
+    { href: "/#contacto", label: t.nav.contact[lang] }
   ];
 
   return (
@@ -47,7 +48,7 @@ export function Header() {
         className="fixed inset-x-0 top-0 z-50"
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-5 md:px-10">
-          <a href="#top" className="text-[15px] font-medium uppercase tracking-[0.22em]">
+          <a href="/#top" className="text-[15px] font-medium uppercase tracking-[0.22em]">
             Pablo Rigalli
           </a>
 
@@ -59,7 +60,7 @@ export function Header() {
                   type="button"
                   onClick={() => setLang(code)}
                   className={`rounded-full px-2.5 py-1.5 transition ${
-                    lang === code ? "bg-ink text-canvas" : "text-muted hover:text-ink"
+                    lang === code ? "bg-ink text-on-accent" : "text-muted hover:text-ink"
                   }`}
                 >
                   {code}
@@ -71,18 +72,18 @@ export function Header() {
                 href={meetUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="group hidden items-center gap-3 rounded-full bg-accent px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.14em] text-canvas transition hover:brightness-110 sm:flex"
+                className="group hidden items-center gap-3 rounded-full bg-accent px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.14em] text-on-accent transition hover:brightness-110 sm:flex"
               >
                 {lang === "es" ? "Agendar meet" : "Book a call"}
-                <span className="h-1.5 w-1.5 rounded-full bg-canvas transition group-hover:scale-150" />
+                <span className="h-1.5 w-1.5 rounded-full bg-on-accent transition group-hover:scale-150" />
               </a>
             ) : (
               <a
                 href={`mailto:${profile.email}`}
-                className="group hidden items-center gap-3 rounded-full bg-accent px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.14em] text-canvas transition hover:brightness-110 sm:flex"
+                className="group hidden items-center gap-3 rounded-full bg-accent px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.14em] text-on-accent transition hover:brightness-110 sm:flex"
               >
                 {t.nav.talk[lang]}
-                <span className="h-1.5 w-1.5 rounded-full bg-canvas transition group-hover:scale-150" />
+                <span className="h-1.5 w-1.5 rounded-full bg-on-accent transition group-hover:scale-150" />
               </a>
             )}
             <a
@@ -157,7 +158,7 @@ export function Header() {
                       type="button"
                       onClick={() => setLang(code)}
                       className={`rounded-full border border-line px-3 py-1.5 ${
-                        lang === code ? "bg-ink text-canvas" : "text-muted"
+                        lang === code ? "bg-ink text-on-accent" : "text-muted"
                       }`}
                     >
                       {code}

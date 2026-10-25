@@ -24,6 +24,7 @@ export const copy = {
     work: { es: "Aporte", en: "Impact" },
     experience: { es: "Trayectoria", en: "Experience" },
     stack: { es: "IA & Stack", en: "AI & Stack" },
+    blog: { es: "Blog", en: "Blog" },
     contact: { es: "Contacto", en: "Contact" },
     talk: { es: "Hablemos", en: "Let’s talk" },
     menu: { es: "Menú", en: "Menu" },
@@ -399,6 +400,60 @@ export const copy = {
         items: ["Unit & e2e testing", "Code review", "CI/CD"]
       }
     ]
+  },
+  blog: {
+    site: { es: "Sitio", en: "Site" },
+    reading: { es: "Lectura", en: "Reading" },
+    postsLabel: { es: "Publicaciones", en: "Posts" },
+    title: {
+      es: "Blog",
+      en: "Blog"
+    },
+    subtitle: {
+      es: "Apuntes sobre tecnología, arquitectura, el pulso de la IA y los aprendizajes que deja el código en el mundo real.",
+      en: "Notes on technology, architecture, the pulse of AI, and the real-world lessons left by code."
+    },
+    minRead: { es: "min de lectura", en: "min read" },
+    back: { es: "Todos los posts", en: "All posts" },
+    more: { es: "Más posts", en: "More posts" },
+    readNext: { es: "Siguiente lectura", en: "Read next" },
+    keepReading: { es: "Seguí leyendo", en: "Keep reading" },
+    moreFrom: { es: "Más en el blog", en: "More on the blog" },
+    continueReading: { es: "Continuar leyendo", en: "Continue reading" },
+    viewAll: { es: "Ver todos los artículos", en: "View all articles" },
+    readMoreEmpty: {
+      es: "Hay más en el blog",
+      en: "There’s more on the blog"
+    },
+    readMoreEmptyHint: {
+      es: "Cuando publique el próximo post, aparecerá acá. Mientras tanto, explorá el índice.",
+      en: "The next post will show up here. For now, browse the index."
+    },
+    empty: { es: "Pronto hay nuevos posts.", en: "New posts coming soon." },
+    indexCount: { es: "publicaciones", en: "posts" },
+    latest: { es: "Reciente", en: "Latest" },
+    openPost: { es: "Leer artículo", en: "Read article" },
+    teaser: {
+      eyebrow: { es: "Blog", en: "Blog" },
+      title: {
+        es: "Lo que escribo cuando el tema merece más que un tweet.",
+        en: "What I write when a topic deserves more than a tweet."
+      },
+      body: {
+        es: "Producto, arquitectura e IA aplicada — notas desde proyectos reales, sin agenda fija.",
+        en: "Product, architecture, and applied AI — notes from real projects, no fixed agenda."
+      },
+      all: { es: "Ver todos los artículos", en: "View all articles" },
+      morePostsHint: {
+        es: "Más notas en el índice.",
+        en: "More notes in the index."
+      },
+      indexLink: { es: "Abrir el índice", en: "Open the index" }
+    },
+    cta: {
+      site: { es: "Explorar el sitio", en: "Explore the site" },
+      allPosts: { es: "Más posts", en: "More posts" }
+    }
   },
   contact: {
     eyebrow: { es: "Siguiente paso", en: "Next step" },

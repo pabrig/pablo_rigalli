@@ -29,7 +29,7 @@ function Terminal({ step, total, active }: { step: Step; total: number; active: 
   const { lang, t } = useCopy();
 
   return (
-    <div className="relative overflow-hidden rounded-[22px] border border-line bg-[#05040c]">
+    <div className="relative overflow-hidden rounded-[22px] border border-line bg-panel">
       <div
         aria-hidden
         className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-accent/9 blur-[90px]"

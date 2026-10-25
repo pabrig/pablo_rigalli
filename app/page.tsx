@@ -6,8 +6,11 @@ import { Stack } from "@/components/Stack";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { Panel } from "@/components/Panel";
+import { BlogTeaser } from "@/components/BlogTeaser";
+import { getAllPosts } from "@/lib/blog";
 
 export default function HomePage() {
+  const posts = getAllPosts();
   return (
     <main className="relative min-h-screen">
       <Header />
@@ -24,6 +27,9 @@ export default function HomePage() {
         <Stack />
       </Panel>
       <Panel className="bg-canvas">
+        <BlogTeaser posts={posts} />
+      </Panel>
+      <Panel className="bg-panel">
         <Contact />
         <Footer />
       </Panel>

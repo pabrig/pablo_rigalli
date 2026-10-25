@@ -65,7 +65,7 @@ export function Panel({
         <motion.div
           aria-hidden
           style={{ opacity: dim }}
-          className="pointer-events-none absolute inset-0 z-10 bg-black"
+          className="pointer-events-none absolute inset-0 z-10 bg-canvas/85"
         />
       </motion.div>
       <div ref={sentinelRef} aria-hidden />

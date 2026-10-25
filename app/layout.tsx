@@ -18,7 +18,7 @@ const serif = Newsreader({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#020208"
+  themeColor: "#232328"
 };
 
 export const metadata: Metadata = {

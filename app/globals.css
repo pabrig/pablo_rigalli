@@ -2,16 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Matte dark — IDE / agent UI: soft gray base, lower contrast type */
 :root {
-  --canvas: #020208;
-  --elevated: #060510;
-  --panel: #04030c;
-  --ink: #ddd9ef;
-  --muted: #6e6c7e;
-  --line: rgba(221, 217, 239, 0.065);
-  --accent: #5a43ef;
-  --accent-soft: #6b57e8;
-  --accent-glow: rgba(90, 67, 239, 0.45);
+  --canvas: #232328;
+  --elevated: #2c2c32;
+  --panel: #28282e;
+  --ink: #d0d0d5;
+  --muted: #94949e;
+  --soft: #b0adb8;
+  --line: rgba(255, 255, 255, 0.1);
+  --accent: #6d62e8;
+  --accent-soft: #8278eb;
+  --accent-glow: rgba(109, 98, 232, 0.22);
+  --prose-body: #b8b8c0;
+  --prose-lead: #c4c4cc;
+  --prose-link: #a8a0dc;
+  --prose-code: #c2bdd8;
+  --code-surface: #34343a;
+  --on-accent: #1e1e22;
   color-scheme: dark;
 }
 
@@ -31,7 +39,9 @@ html.lenis body {
 body {
   background: var(--canvas);
   color: var(--ink);
-  letter-spacing: -0.005em;
+  letter-spacing: -0.004em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .font-serif {
@@ -40,8 +50,8 @@ body {
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--canvas);
+  background: color-mix(in srgb, var(--accent) 55%, var(--canvas));
+  color: var(--ink);
 }
 
 .grain {
@@ -49,8 +59,8 @@ body {
   position: fixed;
   inset: 0;
   z-index: 60;
-  opacity: 0.055;
-  mix-blend-mode: overlay;
+  opacity: 0.028;
+  mix-blend-mode: soft-light;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -69,4 +79,144 @@ body {
 
 .preserve-3d {
   transform-style: preserve-3d;
+}
+
+.blog-prose {
+  color: var(--ink);
+  font-size: 1.125rem;
+  line-height: 1.75;
+  letter-spacing: -0.008em;
+}
+
+.blog-prose > * + * {
+  margin-top: 1.25em;
+}
+
+.blog-prose > p:first-of-type {
+  font-size: 1.1875rem;
+  line-height: 1.7;
+  color: var(--prose-lead);
+}
+
+.blog-prose .blog-h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  padding-top: 0.5rem;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.625rem;
+  font-weight: 400;
+  line-height: 1.28;
+  letter-spacing: -0.028em;
+  color: var(--ink);
+}
+
+.blog-prose .blog-h2:first-child {
+  margin-top: 0;
+}
+
+.blog-prose .blog-h3 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.4rem;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.blog-prose p {
+  color: var(--prose-body);
+}
+
+.blog-prose ul,
+.blog-prose ol {
+  margin-top: 0.65em;
+  margin-bottom: 0.25em;
+  padding-left: 1.25rem;
+  color: var(--prose-body);
+}
+
+.blog-prose li {
+  padding-left: 0.2rem;
+}
+
+.blog-prose li + li {
+  margin-top: 0.5em;
+}
+
+.blog-prose li::marker {
+  color: var(--accent-soft);
+}
+
+.blog-prose strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.blog-prose em {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  color: var(--soft);
+}
+
+.blog-prose .blog-link {
+  color: var(--prose-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.blog-prose .blog-link:hover {
+  color: var(--accent);
+}
+
+.blog-prose .blog-blockquote {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  padding-left: 1.25rem;
+  border-left: 3px solid color-mix(in srgb, var(--accent) 70%, var(--canvas));
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--prose-lead);
+}
+
+.blog-prose .blog-blockquote p {
+  margin-top: 0;
+}
+
+.blog-prose .blog-hr {
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+.blog-prose .blog-inline-code {
+  padding: 0.12em 0.35em;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--code-surface) 90%, var(--canvas));
+  font-family: ui-monospace, monospace;
+  font-size: 0.88em;
+  color: var(--prose-code);
+}
+
+.blog-prose .blog-pre {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--code-surface);
+  padding: 1rem 1.15rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.blog-prose .blog-pre code {
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  color: var(--prose-body);
 }
