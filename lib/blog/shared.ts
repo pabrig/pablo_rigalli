@@ -7,6 +7,7 @@ export type BlogPostMeta = {
   title: Record<Lang, string>;
   description: Record<Lang, string>;
   tags: string[];
+  image?: string;
   published: boolean;
   locales: Record<Lang, boolean>;
 };

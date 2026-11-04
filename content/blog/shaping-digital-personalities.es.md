@@ -1,16 +1,15 @@
-
+---
 title: "La firma humana en el ecosistema de los agentes digitales"
 description: "Cómo nuestras expresiones, cultura y criterio moldean identidades únicas en la IA, construyendo con responsabilidad un entorno digital con voz propia."
 date: "2026-09-19"
 readingMinutes: 4
+image: "https://pablo-rigalli.vercel.app/og-image.png"
 tags:
-
-ai-agents
-
-digital-identity
-
-cultura
+  - AI agents
+  - Digital identity
+  - Cultura
 published: true
+---
 
 ## Más allá del comando: el sello personal en la pantalla
 

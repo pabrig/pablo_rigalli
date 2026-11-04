@@ -23,8 +23,19 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>("es");
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const fromQuery = params.get("lang");
+    if (fromQuery === "es" || fromQuery === "en") {
+      setLangState(fromQuery);
+      window.localStorage.setItem("pr-lang", fromQuery);
+      document.documentElement.lang = fromQuery === "es" ? "es" : "en";
+      return;
+    }
     const stored = window.localStorage.getItem("pr-lang");
-    if (stored === "es" || stored === "en") setLangState(stored);
+    if (stored === "es" || stored === "en") {
+      setLangState(stored);
+      document.documentElement.lang = stored === "es" ? "es" : "en";
+    }
   }, []);
 
   const setLang = (next: Lang) => {

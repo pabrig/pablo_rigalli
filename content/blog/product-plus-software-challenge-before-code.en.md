@@ -3,6 +3,7 @@ title: "Product Before Software: The Real Challenge Precedes the Code"
 description: "Why rushing implementation without understanding the client's real problem only serves to elegantly build a useless solution."
 date: "2026-08-07"
 readingMinutes: 3
+image: "https://pablo-rigalli.vercel.app/og-image.png"
 tags:
   - Product
   - Engineering

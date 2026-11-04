@@ -1,17 +1,16 @@
+---
 title: "Timeless Fundamentals: Consolidated Principles Guiding the Agentic Era"
 description: "When the pace of agentic development clashes with operational reality, speed stops being the primary advantage. A reflection on context management, production urgency, and why software fundamentals continue to set the course."
 date: "2026-11-04"
 readingMinutes: 3
+image: "https://pablo-rigalli.vercel.app/og-image.png"
 tags:
-
-git
-
-ai-agents
-
-architecture
-
-developer-experience
+  - Git
+  - AI agents
+  - Architecture
+  - Developer experience
 published: true
+---
 
 ## The Illusion of Infinite Pace
 
