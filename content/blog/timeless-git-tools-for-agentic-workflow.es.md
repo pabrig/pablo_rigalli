@@ -1,17 +1,16 @@
+---
 title: "Fundamentos atemporales: los principios consolidados que guían la era agéntica"
 description: "Cuando el ritmo del desarrollo agéntico choca con la realidad operativa, la velocidad deja de ser la ventaja principal. Una reflexión sobre la gestión de contextos, la urgencia de producción y por qué los fundamentos del software siguen marcando el rumbo."
 date: "2026-11-04"
 readingMinutes: 3
+image: "https://pablo-rigalli.vercel.app/og-image.png"
 tags:
-
-git
-
-ai-agents
-
-architecture
-
-developer-experience
+  - Git
+  - AI agents
+  - Architecture
+  - Developer experience
 published: true
+---
 
 ## La ilusión del ritmo infinito
 

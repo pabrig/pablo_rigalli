@@ -3,6 +3,7 @@ title: "El nuevo arte del código: del pulso artesanal a la dirección de orques
 description: "La satisfacción del desarrollador solía nacer de escribir cada línea a mano. Hoy, con los agentes sugiriendo el código, el desafío es reinventar ese oficio asumiendo el rol de curador y director de orquesta."
 date: "2026-10-25"
 readingMinutes: 5
+image: "https://pablo-rigalli.vercel.app/og-image.png"
 tags:
   - Desarrollo de software
   - IA aplicada

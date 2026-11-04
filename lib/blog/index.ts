@@ -9,6 +9,8 @@ export type BlogPostMeta = {
   readingMinutes: number;
   title: Record<Lang, string>;
   description: Record<Lang, string>;
+  /** OG/Twitter image URL or site path (optional; see lib/blog/og.ts). */
+  image?: string;
   tags: string[];
   published: boolean;
 };
@@ -122,6 +124,7 @@ function buildMeta(slug: string): BlogPostMeta | null {
       en: String(en?.data.description ?? es?.data.description ?? "")
     },
     tags: Array.isArray(base.tags) ? base.tags.map(String) : [],
+    image: base.image ? String(base.image).trim() : undefined,
     published
   };
 }

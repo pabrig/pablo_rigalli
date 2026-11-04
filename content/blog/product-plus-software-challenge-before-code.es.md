@@ -3,6 +3,7 @@ title: "Producto antes de software: el verdadero desafío está antes del códig
 description: "Por qué acelerar la implementación sin entender el problema real del cliente solo sirve para construir con elegancia una solución inútil."
 date: "2026-08-07"
 readingMinutes: 3
+image: "https://pablo-rigalli.vercel.app/og-image.png"
 tags:
   - Producto
   - Ingeniería

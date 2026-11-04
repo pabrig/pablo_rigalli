@@ -1,15 +1,15 @@
+---
 title: "The Human Touch in the Ecosytem of Digital Agents"
 description: "How our expressions, culture, and judgment shape unique AI identities, responsibly building a digital environment with its own voice."
 date: "2026-09-19"
 readingMinutes: 4
+image: "https://pablo-rigalli.vercel.app/og-image.png"
 tags:
-
-ai-agents
-
-digital-identity
-
-cultura
+  - AI agents
+  - Digital identity
+  - Culture
 published: true
+---
 
 ## Beyond the Prompt: The Human Touch on the Screen
 

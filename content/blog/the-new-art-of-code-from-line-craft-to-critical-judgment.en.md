@@ -3,6 +3,7 @@ title: "The New Art of Code: From Crafting Lines to Conducting the Orchestra"
 description: "Developer satisfaction used to come from writing every line by hand. Today, with agents suggesting code, the challenge is reinventing our craft by stepping into the role of curator and orchestra conductor."
 date: "2026-10-25"
 readingMinutes: 5
+image: "https://pablo-rigalli.vercel.app/og-image.png"
 tags:
   - Software development
   - Applied AI
