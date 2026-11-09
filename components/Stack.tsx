@@ -36,9 +36,9 @@ function Terminal({ step, total, active }: { step: Step; total: number; active: 
       />
       <div className="relative flex items-center justify-between border-b border-line px-5 py-3.5">
         <div className="flex gap-1.5" aria-hidden>
-          <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
-          <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
-          <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
+          <span className="h-2.5 w-2.5 rounded-full bg-dot" />
+          <span className="h-2.5 w-2.5 rounded-full bg-dot" />
+          <span className="h-2.5 w-2.5 rounded-full bg-dot" />
         </div>
         <span className="font-mono text-[11px] text-muted">agent · {step.id}</span>
         <div className="flex gap-1" aria-hidden>
@@ -46,7 +46,7 @@ function Terminal({ step, total, active }: { step: Step; total: number; active: 
             <span
               key={i}
               className={`h-1 rounded-full transition-all duration-500 ${
-                i === active ? "w-5 bg-accent" : "w-1.5 bg-white/15"
+                i === active ? "w-5 bg-accent" : "w-1.5 bg-dot-strong"
               }`}
             />
           ))}

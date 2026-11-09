@@ -57,7 +57,7 @@ export function Contact() {
           <a
             href={cvDownload.href}
             download={cvDownload.fileName}
-            className="rounded-full border border-line bg-white/[0.04] px-6 py-3 text-[12px] font-medium uppercase tracking-[0.14em] transition hover:border-accent/40 hover:bg-white/[0.08]"
+            className="rounded-full border border-line bg-glass px-6 py-3 text-[12px] font-medium uppercase tracking-[0.14em] transition hover:border-accent/40 hover:bg-glass-lift"
           >
             {t.contact.downloadCv[lang]}
           </a>
@@ -65,7 +65,7 @@ export function Contact() {
             href={profile.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full bg-white/[0.06] px-6 py-3 text-[12px] font-medium uppercase tracking-[0.14em] transition hover:bg-white/[0.12]"
+            className="rounded-full bg-glass-strong px-6 py-3 text-[12px] font-medium uppercase tracking-[0.14em] transition hover:bg-glass-hover"
           >
             {t.contact.linkedin}
           </a>
@@ -73,7 +73,7 @@ export function Contact() {
             href={profile.github}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full bg-white/[0.06] px-6 py-3 text-[12px] font-medium uppercase tracking-[0.14em] transition hover:bg-white/[0.12]"
+            className="rounded-full bg-glass-strong px-6 py-3 text-[12px] font-medium uppercase tracking-[0.14em] transition hover:bg-glass-hover"
           >
             {t.contact.github}
           </a>

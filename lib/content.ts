@@ -33,6 +33,29 @@ export const copy = {
     newProject: { es: "Nuevo proyecto", en: "New project" },
     together: { es: "juntos", en: "together" }
   },
+  reading: {
+    open: { es: "Lectura", en: "Reading" },
+    title: { es: "Edición de lectura", en: "Reading settings" },
+    close: { es: "Cerrar", en: "Close" },
+    page: { es: "Tipo de página", en: "Page" },
+    pages: {
+      paper: { es: "Papel", en: "Paper" },
+      sepia: { es: "Sepia", en: "Sepia" },
+      light: { es: "Claro", en: "Light" },
+      dark: { es: "Oscuro", en: "Dark" }
+    },
+    brightness: { es: "Brillo", en: "Brightness" },
+    warmth: { es: "Luz calidad", en: "Light quality" },
+    size: { es: "Tamaño de letra", en: "Type size" },
+    font: { es: "Tipografía", en: "Typeface" },
+    fonts: {
+      default: { es: "Actual", en: "Current" },
+      literata: { es: "Literata", en: "Literata" },
+      source: { es: "Source Sans", en: "Source Sans" },
+      fraunces: { es: "Fraunces", en: "Fraunces" }
+    },
+    reset: { es: "Restablecer", en: "Reset" }
+  },
   hero: {
     greeting: { es: "Hola, soy Pablo", en: "Hi, I’m Pablo" },
     title: {

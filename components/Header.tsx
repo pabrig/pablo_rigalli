@@ -2,16 +2,18 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FiArrowUpRight } from "react-icons/fi";
+import { FiArrowUpRight, FiBookOpen } from "react-icons/fi";
 import { useLanguage } from "@/lib/language";
 import { bookingUrl, cvDownload } from "@/lib/links";
 import { lenisRef } from "./Providers";
+import { ReadingDrawer } from "./ReadingDrawer";
 
 const ease = [0.76, 0, 0.24, 1] as const;
 
 export function Header() {
   const { lang, setLang, t, profile } = useLanguage();
   const [open, setOpen] = useState(false);
+  const [reading, setReading] = useState(false);
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
@@ -22,13 +24,22 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const locked = open || reading;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      if (reading) setReading(false);
+      else setOpen(false);
+    };
     window.addEventListener("keydown", onKey);
-    if (open) lenisRef.current?.stop();
+    if (locked) lenisRef.current?.stop();
     else lenisRef.current?.start();
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open]);
+    document.body.style.overflow = locked ? "hidden" : "";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+      lenisRef.current?.start();
+    };
+  }, [open, reading]);
 
   const meetUrl = bookingUrl();
 
@@ -43,7 +54,7 @@ export function Header() {
   return (
     <>
       <motion.header
-        animate={{ y: hidden && !open ? -96 : 0 }}
+        animate={{ y: hidden && !open && !reading ? -96 : 0 }}
         transition={{ duration: 0.5, ease }}
         className="fixed inset-x-0 top-0 z-50"
       >
@@ -53,7 +64,7 @@ export function Header() {
           </a>
 
           <div className="flex items-center gap-2">
-            <div className="hidden rounded-full bg-white/[0.06] p-1 text-[11px] uppercase tracking-[0.16em] backdrop-blur-md sm:flex">
+            <div className="hidden rounded-full bg-glass-strong p-1 text-[11px] uppercase tracking-[0.16em] backdrop-blur-md sm:flex">
               {(["es", "en"] as const).map((code) => (
                 <button
                   key={code}
@@ -89,16 +100,33 @@ export function Header() {
             <a
               href={cvDownload.href}
               download={cvDownload.fileName}
-              className="hidden rounded-full border border-line bg-white/[0.04] px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.14em] transition hover:border-accent/40 hover:bg-white/[0.08] md:inline-flex"
+              className="hidden rounded-full border border-line bg-glass px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.14em] transition hover:border-accent/40 hover:bg-glass-lift md:inline-flex"
             >
               CV
             </a>
             <button
               type="button"
-              onClick={() => setOpen((v) => !v)}
+              onClick={() => {
+                setReading((v) => !v);
+                setOpen(false);
+              }}
+              aria-expanded={reading}
+              aria-controls="reading-drawer"
+              aria-label={t.reading.open[lang]}
+              className="flex items-center gap-2 rounded-full border border-line bg-glass px-3 py-2.5 text-[12px] font-medium uppercase tracking-[0.14em] backdrop-blur-md transition hover:border-accent/40 hover:bg-glass-strong sm:px-5"
+            >
+              <FiBookOpen className="text-sm" aria-hidden />
+              <span className="hidden sm:inline">{t.reading.open[lang]}</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setOpen((v) => !v);
+                setReading(false);
+              }}
               aria-expanded={open}
               aria-controls="site-menu"
-              className="flex items-center gap-3 rounded-full bg-white/[0.06] px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.14em] backdrop-blur-md transition hover:bg-white/[0.12]"
+              className="flex items-center gap-3 rounded-full bg-glass-strong px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.14em] backdrop-blur-md transition hover:bg-glass-hover"
             >
               {open ? t.nav.close[lang] : t.nav.menu[lang]}
               <span className="flex gap-1" aria-hidden>
@@ -213,6 +241,7 @@ export function Header() {
           </motion.div>
         )}
       </AnimatePresence>
+      <ReadingDrawer open={reading} onClose={() => setReading(false)} />
     </>
   );
 }

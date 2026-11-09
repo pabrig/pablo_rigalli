@@ -129,17 +129,17 @@ function Beam({
     >
       <motion.div
         style={{ opacity: veil }}
-        className="absolute inset-x-0 inset-y-0 bg-[radial-gradient(ellipse_50%_80%_at_50%_8%,rgba(130,120,235,0.1),rgba(109,98,232,0.07)_32%,rgba(60,58,80,0.05)_62%,transparent_82%)] blur-2xl"
+        className="hero-beam absolute inset-x-0 inset-y-0 blur-2xl"
       />
       <motion.div
         style={{ opacity: veil }}
-        className="absolute inset-x-[18%] inset-y-[2%] bg-[linear-gradient(180deg,rgba(130,120,235,0.07),rgba(109,98,232,0.06)_34%,transparent_88%)] blur-xl"
+        className="hero-beam-core absolute inset-x-[18%] inset-y-[2%] blur-xl"
       />
-      <div className="absolute inset-x-[36%] inset-y-[6%] bg-[linear-gradient(180deg,rgba(107,87,232,0.05),rgba(109,98,232,0.04)_40%,transparent)] blur-md" />
+      <div className="hero-beam-thin absolute inset-x-[36%] inset-y-[6%] blur-md" />
       {!reduceMotion && (
         <motion.span
           style={{ top: travel }}
-          className="absolute left-1/2 h-28 w-20 -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(130,120,235,0.14),rgba(109,98,232,0.08)_45%,transparent)] blur-xl"
+          className="hero-beam-spark absolute left-1/2 h-28 w-20 -translate-x-1/2 rounded-full blur-xl"
         />
       )}
     </motion.div>
@@ -186,9 +186,9 @@ function Spark({
       >
         <defs>
           <linearGradient id="spark-fill" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#c8bfff" />
-            <stop offset="55%" stopColor="#7565e8" />
-            <stop offset="100%" stopColor="#5a43ef" />
+            <stop offset="0%" stopColor="var(--accent-bright)" />
+            <stop offset="55%" stopColor="var(--accent)" />
+            <stop offset="100%" stopColor="var(--accent-deep)" />
           </linearGradient>
         </defs>
         <motion.path
@@ -200,7 +200,7 @@ function Spark({
         />
         <path
           d="M80 14 C80.8 19 81 19.2 86 20 C81 20.8 80.8 21 80 26 C79.2 21 79 20.8 74 20 C79 19.2 79.2 19 80 14Z"
-          fill="#9a8ee6"
+          fill="var(--accent-soft)"
           opacity="0.8"
         />
       </motion.svg>
@@ -337,7 +337,7 @@ export function Hero() {
   );
   const rigScale = useTransform(intro, [0, 1], [0.82, 1]);
   const glow = useTransform(scrollYProgress, [0, 0.6], [0.2, 0.52]);
-  const spotlight = useMotionTemplate`radial-gradient(520px circle at ${lightX}px ${lightY}px, rgba(109, 98, 232, 0.06), transparent 62%)`;
+  const spotlight = useMotionTemplate`radial-gradient(520px circle at ${lightX}px ${lightY}px, color-mix(in srgb, var(--accent) 14%, transparent), transparent 62%)`;
 
   const stageScale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
   const stageY = useTransform(scrollYProgress, [0, 1], [0, 140]);
@@ -421,7 +421,7 @@ export function Hero() {
               />
               <div
                 aria-hidden
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_75%_at_50%_45%,transparent_35%,rgba(2,2,8,0.62))]"
+                className="hero-vignette pointer-events-none absolute inset-0"
               />
               <motion.div
                 aria-hidden
@@ -490,10 +490,10 @@ export function Hero() {
 
                     <Plane index={2} depth={depth} className="border border-line bg-elevated/90">
                       <div className="absolute inset-5 grid grid-cols-3 grid-rows-4 gap-2">
-                        <div className="col-span-3 rounded-md bg-white/[0.06]" />
-                        <div className="row-span-3 rounded-md bg-white/[0.035]" />
-                        <div className="col-span-2 row-span-2 rounded-md bg-white/[0.045]" />
-                        <div className="rounded-md bg-white/[0.035]" />
+                        <div className="col-span-3 rounded-md bg-glass-strong" />
+                        <div className="row-span-3 rounded-md bg-glass" />
+                        <div className="col-span-2 row-span-2 rounded-md bg-glass-strong" />
+                        <div className="rounded-md bg-glass" />
                         <div className="rounded-md bg-accent/30" />
                       </div>
                       <Label text={layers[1]} />
@@ -565,7 +565,7 @@ export function Hero() {
                     href={`mailto:${profile.email}`}
                     className={`rounded-full px-6 py-3 text-[12px] font-medium uppercase tracking-[0.14em] backdrop-blur transition ${
                       meetUrl
-                        ? "bg-white/[0.04] hover:bg-white/[0.12]"
+                        ? "bg-glass hover:bg-glass-hover"
                         : "bg-accent text-on-accent hover:brightness-110"
                     }`}
                   >
@@ -574,13 +574,13 @@ export function Hero() {
                   <a
                     href={cvDownload.href}
                     download={cvDownload.fileName}
-                    className="rounded-full border border-line bg-white/[0.04] px-6 py-3 text-[12px] font-medium uppercase tracking-[0.14em] transition hover:border-accent/40 hover:bg-white/[0.05]"
+                    className="rounded-full border border-line bg-glass px-6 py-3 text-[12px] font-medium uppercase tracking-[0.14em] transition hover:border-accent/40 hover:bg-glass-strong"
                   >
                     {t.hero.downloadCv[lang]}
                   </a>
                   <a
                     href="#trayectoria"
-                    className="rounded-full bg-white/[0.04] px-6 py-3 text-[12px] font-medium uppercase tracking-[0.14em] backdrop-blur transition hover:bg-white/[0.12]"
+                    className="rounded-full bg-glass px-6 py-3 text-[12px] font-medium uppercase tracking-[0.14em] backdrop-blur transition hover:bg-glass-hover"
                   >
                     {t.hero.secondary[lang]}
                   </a>

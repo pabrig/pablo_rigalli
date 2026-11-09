@@ -37,10 +37,8 @@ function RoleCard({
     if (!viewport) return 0;
     return ((center + v - viewport / 2) / viewport) * -28;
   });
-  const borderColor = useTransform(
-    proximity,
-    [0.6, 1],
-    ["rgba(255,255,255,0.06)", "rgba(109,98,232,0.18)"]
+  const borderColor = useTransform(proximity, (value) =>
+    value > 0.85 ? "var(--accent)" : "var(--line)"
   );
 
   return (
@@ -108,7 +106,7 @@ export function Experience() {
         <motion.p
           aria-hidden
           style={{ x: titleX }}
-          className="pointer-events-none absolute left-0 top-[10vh] whitespace-nowrap font-serif text-[22vw] italic leading-none text-white/[0.03] md:text-[16vw]"
+          className="pointer-events-none absolute left-0 top-[10vh] whitespace-nowrap font-serif text-[22vw] italic leading-none text-watermark md:text-[16vw]"
         >
           {t.experience.eyebrow[lang]} — 2020 / 2026
         </motion.p>

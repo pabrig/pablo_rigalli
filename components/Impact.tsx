@@ -16,13 +16,13 @@ function ProductVisual({ animate }: { animate: boolean }) {
       {layers.map((layer, i) => (
         <div
           key={layer}
-          className="flex h-9 items-center justify-between rounded-lg border border-line bg-white/[0.03] px-3"
+          className="flex h-9 items-center justify-between rounded-lg border border-line bg-watermark px-3"
           style={{ marginLeft: i * 14, marginRight: (2 - i) * 14 }}
         >
           <span className="font-mono text-[10px] tracking-[0.2em] text-muted">{layer}</span>
           <span className="flex gap-1">
             {[0, 1, 2].map((d) => (
-              <span key={d} className="h-1 w-4 rounded-full bg-white/10" />
+              <span key={d} className="h-1 w-4 rounded-full bg-dot" />
             ))}
           </span>
         </div>
@@ -58,7 +58,7 @@ function ArchitectureVisual({ animate }: { animate: boolean }) {
             y1={50}
             x2={x}
             y2={y}
-            stroke="#5a43ef"
+            stroke="var(--accent)"
             strokeWidth="0.5"
             strokeDasharray="2 2"
             vectorEffect="non-scaling-stroke"
@@ -75,8 +75,8 @@ function ArchitectureVisual({ animate }: { animate: boolean }) {
           width={i === 2 ? 18 : 14}
           height={i === 2 ? 14 : 10}
           rx="2"
-          fill={i === 2 ? "rgba(90,67,239,0.12)" : "rgba(255,255,255,0.03)"}
-          stroke={i === 2 ? "#5a43ef" : "rgba(221,217,239,0.14)"}
+          fill={i === 2 ? "color-mix(in srgb, var(--accent) 18%, transparent)" : "var(--watermark)"}
+          stroke={i === 2 ? "var(--accent)" : "var(--line)"}
           strokeWidth="0.5"
           vectorEffect="non-scaling-stroke"
         />
@@ -98,14 +98,14 @@ function DxVisual({ animate }: { animate: boolean }) {
       >
         <path
           d="M50 4 C53 34 66 47 96 50 C66 53 53 66 50 96 C47 66 34 53 4 50 C34 47 47 34 50 4Z"
-          fill="#5a43ef"
+          fill="var(--accent)"
         />
       </motion.svg>
       <div className="flex flex-1 flex-col gap-2.5">
         {lines.map((width, i) => (
           <motion.span
             key={i}
-            className="h-1.5 origin-left rounded-full bg-white/[0.12]"
+            className="h-1.5 origin-left rounded-full bg-glass-hover"
             style={{ width: `${width * 100}%` }}
             initial={{ scaleX: animate ? 0 : 1 }}
             animate={animate ? { scaleX: [0, 1, 1, 0] } : undefined}

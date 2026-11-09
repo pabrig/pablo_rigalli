@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 import { LanguageProvider } from "@/lib/language";
+import { ReadingProvider } from "@/lib/reading";
 
 export const lenisRef: { current: Lenis | null } = { current: null };
 
@@ -36,8 +37,10 @@ function SmoothScroll() {
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <LanguageProvider>
-      <SmoothScroll />
-      {children}
+      <ReadingProvider>
+        <SmoothScroll />
+        {children}
+      </ReadingProvider>
     </LanguageProvider>
   );
 }

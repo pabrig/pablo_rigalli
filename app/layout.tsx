@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Inter_Tight, Newsreader } from "next/font/google";
+import { Fraunces, Inter_Tight, Literata, Newsreader, Source_Sans_3 } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
+import { READING_BOOT_SCRIPT } from "@/lib/reading-prefs";
 
 const sans = Inter_Tight({
   subsets: ["latin"],
@@ -14,6 +16,24 @@ const serif = Newsreader({
   style: ["normal", "italic"],
   axes: ["opsz"],
   variable: "--font-serif",
+  display: "swap"
+});
+
+const literata = Literata({
+  subsets: ["latin"],
+  variable: "--font-literata",
+  display: "swap"
+});
+
+const sourceSans = Source_Sans_3({
+  subsets: ["latin"],
+  variable: "--font-source",
+  display: "swap"
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
   display: "swap"
 });
 
@@ -57,8 +77,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${sans.variable} ${serif.variable}`}>
+    <html
+      lang="es"
+      suppressHydrationWarning
+      className={`${sans.variable} ${serif.variable} ${literata.variable} ${sourceSans.variable} ${fraunces.variable}`}
+    >
       <body className="font-sans antialiased">
+        <Script id="reading-boot" strategy="beforeInteractive">
+          {READING_BOOT_SCRIPT}
+        </Script>
         <div className="grain" aria-hidden />
         <Providers>{children}</Providers>
       </body>
