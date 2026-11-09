@@ -48,6 +48,7 @@ export function Header() {
     { href: "/#trayectoria", label: t.nav.experience[lang] },
     { href: "/#stack", label: t.nav.stack[lang] },
     { href: "/blog", label: t.nav.blog[lang] },
+    { href: "/docs", label: t.nav.docs[lang] },
     { href: "/#contacto", label: t.nav.contact[lang] }
   ];
 

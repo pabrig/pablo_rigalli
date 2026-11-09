@@ -251,6 +251,15 @@ body {
   color: var(--ink);
 }
 
+.blog-prose .blog-h4 {
+  margin-top: 1.35rem;
+  margin-bottom: 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
 .blog-prose p {
   color: var(--prose-body);
 }
@@ -392,6 +401,12 @@ body {
     transparent 35%,
     color-mix(in srgb, var(--canvas) 72%, transparent)
   );
+}
+
+.docs-prose .blog-h2,
+.docs-prose .blog-h3,
+.docs-prose .blog-h4 {
+  scroll-margin-top: 7rem;
 }
 
 .reading-range {
