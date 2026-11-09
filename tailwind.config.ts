@@ -17,11 +17,18 @@ const config: Config = {
         canvas: "var(--canvas)",
         elevated: "var(--elevated)",
         panel: "var(--panel)",
-        "on-accent": "var(--on-accent)"
+        "on-accent": "var(--on-accent)",
+        glass: "var(--glass)",
+        "glass-strong": "var(--glass-strong)",
+        "glass-lift": "var(--glass-lift)",
+        "glass-hover": "var(--glass-hover)",
+        watermark: "var(--watermark)",
+        dot: "var(--dot)",
+        "dot-strong": "var(--dot-strong)"
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        serif: ["var(--font-serif)", "Georgia", "serif"]
+        sans: ["var(--font-body)", "system-ui", "sans-serif"],
+        serif: ["var(--font-display)", "Georgia", "serif"]
       }
     }
   },

@@ -2,25 +2,153 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Matte dark — IDE / agent UI: soft gray base, lower contrast type */
+/* Reading theme. Page palettes set the bases; brightness and warmth remix surfaces. */
 :root {
-  --canvas: #232328;
-  --elevated: #2c2c32;
-  --panel: #28282e;
+  --brightness: 100;
+  --warmth: 0;
+  --type-scale: 1;
+  --warm-tint: #e4b06a;
+  --font-body: var(--font-sans), system-ui, sans-serif;
+  --font-display: var(--font-serif), Georgia, serif;
+
+  --canvas-base: #232328;
+  --elevated-base: #2c2c32;
+  --panel-base: #28282e;
+  --code-base: #34343a;
   --ink: #d0d0d5;
   --muted: #94949e;
   --soft: #b0adb8;
   --line: rgba(255, 255, 255, 0.1);
   --accent: #6d62e8;
   --accent-soft: #8278eb;
+  --accent-bright: #c8bfff;
+  --accent-deep: #5a43ef;
   --accent-glow: rgba(109, 98, 232, 0.22);
   --prose-body: #b8b8c0;
   --prose-lead: #c4c4cc;
   --prose-link: #a8a0dc;
   --prose-code: #c2bdd8;
-  --code-surface: #34343a;
   --on-accent: #1e1e22;
+  --glass: rgba(255, 255, 255, 0.04);
+  --glass-strong: rgba(255, 255, 255, 0.06);
+  --glass-lift: rgba(255, 255, 255, 0.08);
+  --glass-hover: rgba(255, 255, 255, 0.12);
+  --watermark: rgba(255, 255, 255, 0.03);
+  --dot: rgba(255, 255, 255, 0.1);
+  --dot-strong: rgba(255, 255, 255, 0.15);
   color-scheme: dark;
+
+  --canvas: color-mix(
+    in srgb,
+    #000 calc((100 - var(--brightness)) * 0.45%),
+    color-mix(in srgb, var(--warm-tint) calc(var(--warmth) * 0.18%), var(--canvas-base))
+  );
+  --elevated: color-mix(
+    in srgb,
+    #000 calc((100 - var(--brightness)) * 0.45%),
+    color-mix(in srgb, var(--warm-tint) calc(var(--warmth) * 0.18%), var(--elevated-base))
+  );
+  --panel: color-mix(
+    in srgb,
+    #000 calc((100 - var(--brightness)) * 0.45%),
+    color-mix(in srgb, var(--warm-tint) calc(var(--warmth) * 0.18%), var(--panel-base))
+  );
+  --code-surface: color-mix(
+    in srgb,
+    #000 calc((100 - var(--brightness)) * 0.45%),
+    color-mix(in srgb, var(--warm-tint) calc(var(--warmth) * 0.18%), var(--code-base))
+  );
+}
+
+html[data-page="light"] {
+  --canvas-base: #f4f4f6;
+  --elevated-base: #ffffff;
+  --panel-base: #ececee;
+  --code-base: #e4e4e8;
+  --ink: #1c1c22;
+  --muted: #5c5c68;
+  --soft: #3a3a44;
+  --line: rgba(20, 18, 28, 0.1);
+  --prose-body: #3a3a44;
+  --prose-lead: #24242c;
+  --prose-link: #5148c4;
+  --prose-code: #3d3668;
+  --on-accent: #ffffff;
+  --glass: rgba(20, 16, 28, 0.04);
+  --glass-strong: rgba(20, 16, 28, 0.06);
+  --glass-lift: rgba(20, 16, 28, 0.08);
+  --glass-hover: rgba(20, 16, 28, 0.12);
+  --watermark: rgba(20, 16, 28, 0.05);
+  --dot: rgba(20, 16, 28, 0.12);
+  --dot-strong: rgba(20, 16, 28, 0.18);
+  color-scheme: light;
+}
+
+html[data-page="paper"] {
+  --canvas-base: #f3efe6;
+  --elevated-base: #faf7f1;
+  --panel-base: #e9e3d6;
+  --code-base: #e3dccb;
+  --ink: #2a241c;
+  --muted: #6e6456;
+  --soft: #4a4236;
+  --line: rgba(42, 36, 28, 0.12);
+  --prose-body: #3f382e;
+  --prose-lead: #2a241c;
+  --prose-link: #5742b4;
+  --prose-code: #4a3d68;
+  --on-accent: #ffffff;
+  --glass: rgba(42, 36, 28, 0.04);
+  --glass-strong: rgba(42, 36, 28, 0.06);
+  --glass-lift: rgba(42, 36, 28, 0.08);
+  --glass-hover: rgba(42, 36, 28, 0.12);
+  --watermark: rgba(42, 36, 28, 0.05);
+  --dot: rgba(42, 36, 28, 0.12);
+  --dot-strong: rgba(42, 36, 28, 0.18);
+  color-scheme: light;
+}
+
+html[data-page="sepia"] {
+  --canvas-base: #f4e4c4;
+  --elevated-base: #f8edd6;
+  --panel-base: #ead6b0;
+  --code-base: #e4d0a8;
+  --ink: #3b2a16;
+  --muted: #7a6244;
+  --soft: #5c4630;
+  --line: rgba(59, 42, 22, 0.14);
+  --prose-body: #4a3824;
+  --prose-lead: #3b2a16;
+  --prose-link: #5c3eae;
+  --prose-code: #4e3a28;
+  --on-accent: #fffaf3;
+  --glass: rgba(59, 42, 22, 0.05);
+  --glass-strong: rgba(59, 42, 22, 0.07);
+  --glass-lift: rgba(59, 42, 22, 0.1);
+  --glass-hover: rgba(59, 42, 22, 0.14);
+  --watermark: rgba(59, 42, 22, 0.06);
+  --dot: rgba(59, 42, 22, 0.14);
+  --dot-strong: rgba(59, 42, 22, 0.2);
+  color-scheme: light;
+}
+
+html {
+  font-size: calc(16px * var(--type-scale));
+}
+
+html[data-font="literata"] {
+  --font-body: var(--font-literata), Georgia, serif;
+  --font-display: var(--font-literata), Georgia, serif;
+}
+
+html[data-font="source"] {
+  --font-body: var(--font-source), system-ui, sans-serif;
+  --font-display: var(--font-source), Georgia, serif;
+}
+
+html[data-font="fraunces"] {
+  --font-body: var(--font-fraunces), Georgia, serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
 }
 
 html.lenis,
@@ -102,7 +230,7 @@ body {
   margin-top: 2.5rem;
   margin-bottom: 0.75rem;
   padding-top: 0.5rem;
-  font-family: var(--font-serif), Georgia, serif;
+  font-family: var(--font-display), Georgia, serif;
   font-size: 1.625rem;
   font-weight: 400;
   line-height: 1.28;
@@ -153,7 +281,7 @@ body {
 }
 
 .blog-prose em {
-  font-family: var(--font-serif), Georgia, serif;
+  font-family: var(--font-display), Georgia, serif;
   font-style: italic;
   color: var(--soft);
 }
@@ -175,7 +303,7 @@ body {
   margin-bottom: 1.5em;
   padding-left: 1.25rem;
   border-left: 3px solid color-mix(in srgb, var(--accent) 70%, var(--canvas));
-  font-family: var(--font-serif), Georgia, serif;
+  font-family: var(--font-display), Georgia, serif;
   font-size: 1.2rem;
   font-style: italic;
   line-height: 1.55;
@@ -219,4 +347,89 @@ body {
   padding: 0;
   font-size: inherit;
   color: var(--prose-body);
+}
+
+.hero-beam {
+  background: radial-gradient(
+    ellipse 50% 80% at 50% 8%,
+    color-mix(in srgb, var(--accent) 22%, transparent),
+    color-mix(in srgb, var(--accent) 12%, transparent) 32%,
+    color-mix(in srgb, var(--canvas) 10%, transparent) 62%,
+    transparent 82%
+  );
+}
+
+.hero-beam-core {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--accent) 16%, transparent),
+    color-mix(in srgb, var(--accent) 10%, transparent) 34%,
+    transparent 88%
+  );
+}
+
+.hero-beam-thin {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--accent) 12%, transparent),
+    color-mix(in srgb, var(--accent) 8%, transparent) 40%,
+    transparent
+  );
+}
+
+.hero-beam-spark {
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--accent) 28%, transparent),
+    color-mix(in srgb, var(--accent) 14%, transparent) 45%,
+    transparent
+  );
+}
+
+.hero-vignette {
+  background: radial-gradient(
+    ellipse 85% 75% at 50% 45%,
+    transparent 35%,
+    color-mix(in srgb, var(--canvas) 72%, transparent)
+  );
+}
+
+.reading-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--accent) var(--range-fill, 0%),
+    var(--line) var(--range-fill, 0%)
+  );
+  outline: none;
+  cursor: pointer;
+}
+
+.reading-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 14px;
+  width: 14px;
+  border-radius: 999px;
+  background: var(--ink);
+  border: 0;
+  cursor: pointer;
+}
+
+.reading-range::-moz-range-track {
+  height: 2px;
+  background: transparent;
+  border: 0;
+}
+
+.reading-range::-moz-range-thumb {
+  height: 14px;
+  width: 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--ink);
+  cursor: pointer;
 }

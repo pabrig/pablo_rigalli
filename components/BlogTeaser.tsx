@@ -43,7 +43,7 @@ export function BlogTeaser({ posts }: { posts: BlogPostMeta[] }) {
             <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-muted">{b.body[lang]}</p>
             <Link
               href="/blog"
-              className="group mt-8 inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.04] px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.14em] transition hover:border-accent/40 hover:bg-white/[0.06]"
+              className="group mt-8 inline-flex items-center gap-2 rounded-full border border-line bg-glass px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.14em] transition hover:border-accent/40 hover:bg-glass-strong"
             >
               {b.all[lang]}
               <FiArrowUpRight className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
