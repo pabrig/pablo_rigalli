@@ -25,6 +25,7 @@ export const copy = {
     experience: { es: "Trayectoria", en: "Experience" },
     stack: { es: "IA & Stack", en: "AI & Stack" },
     blog: { es: "Blog", en: "Blog" },
+    docs: { es: "Manual", en: "Docs" },
     contact: { es: "Contacto", en: "Contact" },
     talk: { es: "Hablemos", en: "Let’s talk" },
     menu: { es: "Menú", en: "Menu" },
@@ -433,8 +434,8 @@ export const copy = {
       en: "Blog"
     },
     subtitle: {
-      es: "Apuntes sobre tecnología, arquitectura, el pulso de la IA y los aprendizajes que deja el código en el mundo real.",
-      en: "Notes on technology, architecture, the pulse of AI, and the real-world lessons left by code."
+      es: "El día a día es el único lugar donde una teoría dice la verdad.",
+      en: "Everyday life is the only place where a theory tells the truth."
     },
     minRead: { es: "min de lectura", en: "min read" },
     back: { es: "Todos los posts", en: "All posts" },
@@ -459,12 +460,12 @@ export const copy = {
     teaser: {
       eyebrow: { es: "Blog", en: "Blog" },
       title: {
-        es: "Lo que escribo cuando el tema merece más que un tweet.",
-        en: "What I write when a topic deserves more than a tweet."
+        es: "El día a día es el único lugar donde una teoría dice la verdad.",
+        en: "Everyday life is the only place where a theory tells the truth."
       },
       body: {
-        es: "Producto, arquitectura e IA aplicada — notas desde proyectos reales, sin agenda fija.",
-        en: "Product, architecture, and applied AI — notes from real projects, no fixed agenda."
+        es: "Escribo desde la opinión y desde lo vivido. Quedate, y leé como quien tiene tiempo.",
+        en: "I write from opinion and from lived experience. Stay, and read as someone with time."
       },
       all: { es: "Ver todos los artículos", en: "View all articles" },
       morePostsHint: {
@@ -476,6 +477,32 @@ export const copy = {
     cta: {
       site: { es: "Explorar el sitio", en: "Explore the site" },
       allPosts: { es: "Más posts", en: "More posts" }
+    }
+  },
+  docs: {
+    index: { es: "Índice", en: "Index" },
+    search: { es: "Buscar en el manual", en: "Search the manual" },
+    tags: { es: "Temas", en: "Topics" },
+    all: { es: "Todos", en: "All" },
+    onThisPage: { es: "En esta sección", en: "In this section" },
+    empty: { es: "Nada coincide con esa búsqueda.", en: "Nothing matches that search." },
+    prev: { es: "Anterior", en: "Previous" },
+    next: { es: "Siguiente", en: "Next" },
+    emptyManual: {
+      es: "El manual todavía no tiene secciones.",
+      en: "The manual has no sections yet."
+    },
+    teaser: {
+      eyebrow: { es: "Manual", en: "Docs" },
+      title: {
+        es: "Documentación técnica.",
+        en: "Technical documentation."
+      },
+      body: {
+        es: "Funcionamiento, contratos y límites.",
+        en: "Behavior, contracts, and limits."
+      },
+      open: { es: "Abrir el manual", en: "Open the manual" }
     }
   },
   contact: {

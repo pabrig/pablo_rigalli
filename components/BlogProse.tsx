@@ -21,8 +21,21 @@ const components: Components = {
       </a>
     );
   },
-  h2: ({ children }) => <h2 className="blog-h2">{children}</h2>,
-  h3: ({ children }) => <h3 className="blog-h3">{children}</h3>,
+  h2: ({ children, id }) => (
+    <h2 id={id} className="blog-h2">
+      {children}
+    </h2>
+  ),
+  h3: ({ children, id }) => (
+    <h3 id={id} className="blog-h3">
+      {children}
+    </h3>
+  ),
+  h4: ({ children, id }) => (
+    <h4 id={id} className="blog-h4">
+      {children}
+    </h4>
+  ),
   blockquote: ({ children }) => <blockquote className="blog-blockquote">{children}</blockquote>,
   hr: () => <hr className="blog-hr" />,
   code: ({ className, children, ...props }) => {
@@ -43,10 +56,43 @@ const components: Components = {
   pre: ({ children }) => <pre className="blog-pre">{children}</pre>
 };
 
-export function BlogProse({ markdown }: { markdown: string }) {
+type MdNode = {
+  type?: string;
+  depth?: number;
+  children?: MdNode[];
+  data?: { hProperties?: Record<string, string> };
+};
+
+function remarkHeadingIds(ids: string[]) {
+  return function headingIdsPlugin() {
+    return (tree: MdNode) => {
+      let index = 0;
+      const walk = (node: MdNode | undefined) => {
+        if (!node || typeof node !== "object") return;
+        if (node.type === "heading" && node.depth && node.depth >= 2 && node.depth <= 4) {
+          const id = ids[index];
+          index += 1;
+          if (id) node.data = { ...node.data, hProperties: { ...(node.data?.hProperties ?? {}), id } };
+        }
+        node.children?.forEach(walk);
+      };
+      walk(tree);
+    };
+  };
+}
+
+export function BlogProse({
+  markdown,
+  headingIds
+}: {
+  markdown: string;
+  headingIds?: string[];
+}) {
+  const plugins = headingIds?.length ? [remarkGfm, remarkHeadingIds(headingIds)] : [remarkGfm];
+
   return (
     <div className="blog-prose">
-      <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
+      <ReactMarkdown remarkPlugins={plugins} components={components}>
         {markdown}
       </ReactMarkdown>
     </div>

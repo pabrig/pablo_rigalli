@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FiArrowUpRight, FiBookOpen } from "react-icons/fi";
+import { FiArrowUpRight, FiBookOpen, FiCalendar, FiDownload, FiLinkedin, FiMenu, FiX } from "react-icons/fi";
 import { useLanguage } from "@/lib/language";
 import { bookingUrl, cvDownload } from "@/lib/links";
 import { lenisRef } from "./Providers";
@@ -14,13 +14,18 @@ export function Header() {
   const { lang, setLang, t, profile } = useLanguage();
   const [open, setOpen] = useState(false);
   const [reading, setReading] = useState(false);
-  const [hidden, setHidden] = useState(false);
+  const [compact, setCompact] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setHidden(window.scrollY > 120);
+    const onScroll = () => setCompact(window.scrollY > 48);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const timer = window.setTimeout(() => lenisRef.current?.on("scroll", onScroll), 0);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.clearTimeout(timer);
+      lenisRef.current?.off("scroll", onScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -42,24 +47,36 @@ export function Header() {
   }, [open, reading]);
 
   const meetUrl = bookingUrl();
+  const tight = compact && !open && !reading;
+  const meetLabel = lang === "es" ? "Agendar meet" : "Book a call";
 
   const links = [
     { href: "/#aporte", label: t.nav.work[lang] },
     { href: "/#trayectoria", label: t.nav.experience[lang] },
     { href: "/#stack", label: t.nav.stack[lang] },
     { href: "/blog", label: t.nav.blog[lang] },
+    { href: "/docs", label: t.nav.docs[lang] },
     { href: "/#contacto", label: t.nav.contact[lang] }
   ];
 
   return (
     <>
-      <motion.header
-        animate={{ y: hidden && !open && !reading ? -96 : 0 }}
-        transition={{ duration: 0.5, ease }}
-        className="fixed inset-x-0 top-0 z-50"
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 ${
+          tight ? "border-b border-line bg-canvas/80 backdrop-blur-md" : "border-b border-transparent"
+        }`}
       >
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-5 md:px-10">
-          <a href="/#top" className="text-[15px] font-medium uppercase tracking-[0.22em]">
+        <div
+          className={`mx-auto flex max-w-[1400px] items-center justify-between px-5 transition-[padding] duration-300 md:px-10 ${
+            tight ? "py-2" : "py-5"
+          }`}
+        >
+          <a
+            href="/#top"
+            className={`font-medium uppercase transition-all duration-300 ${
+              tight ? "text-[13px] tracking-[0.16em]" : "text-[15px] tracking-[0.22em]"
+            }`}
+          >
             Pablo Rigalli
           </a>
 
@@ -83,26 +100,54 @@ export function Header() {
                 href={meetUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="group hidden items-center gap-3 rounded-full bg-accent px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.14em] text-on-accent transition hover:brightness-110 sm:flex"
+                aria-label={meetLabel}
+                className={`group items-center justify-center rounded-full bg-accent text-[12px] font-medium uppercase tracking-[0.14em] text-on-accent transition hover:brightness-110 ${
+                  tight ? "hidden h-9 w-9 sm:flex" : "hidden gap-3 px-5 py-2.5 sm:flex"
+                }`}
               >
-                {lang === "es" ? "Agendar meet" : "Book a call"}
-                <span className="h-1.5 w-1.5 rounded-full bg-on-accent transition group-hover:scale-150" />
+                {tight ? <FiCalendar className="text-base" aria-hidden /> : null}
+                <span className={tight ? "sr-only" : undefined}>{meetLabel}</span>
+                {tight ? null : (
+                  <span className="h-1.5 w-1.5 rounded-full bg-on-accent transition group-hover:scale-150" />
+                )}
               </a>
             ) : (
               <a
                 href={`mailto:${profile.email}`}
-                className="group hidden items-center gap-3 rounded-full bg-accent px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.14em] text-on-accent transition hover:brightness-110 sm:flex"
+                aria-label={t.nav.talk[lang]}
+                className={`group items-center justify-center rounded-full bg-accent text-[12px] font-medium uppercase tracking-[0.14em] text-on-accent transition hover:brightness-110 ${
+                  tight ? "hidden h-9 w-9 sm:flex" : "hidden gap-3 px-5 py-2.5 sm:flex"
+                }`}
               >
-                {t.nav.talk[lang]}
-                <span className="h-1.5 w-1.5 rounded-full bg-on-accent transition group-hover:scale-150" />
+                {tight ? <FiCalendar className="text-base" aria-hidden /> : null}
+                <span className={tight ? "sr-only" : undefined}>{t.nav.talk[lang]}</span>
+                {tight ? null : (
+                  <span className="h-1.5 w-1.5 rounded-full bg-on-accent transition group-hover:scale-150" />
+                )}
               </a>
             )}
             <a
               href={cvDownload.href}
               download={cvDownload.fileName}
-              className="hidden rounded-full border border-line bg-glass px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.14em] transition hover:border-accent/40 hover:bg-glass-lift md:inline-flex"
+              aria-label="CV"
+              className={`items-center justify-center rounded-full border border-line bg-glass text-[12px] font-medium uppercase tracking-[0.14em] backdrop-blur-md transition hover:border-accent/40 hover:bg-glass-lift ${
+                tight ? "hidden h-9 w-9 md:flex" : "hidden px-5 py-2.5 md:inline-flex"
+              }`}
             >
-              CV
+              {tight ? <FiDownload className="text-base" aria-hidden /> : null}
+              <span className={tight ? "sr-only" : undefined}>CV</span>
+            </a>
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className={`flex items-center justify-center rounded-full border border-line bg-glass text-[12px] font-medium uppercase tracking-[0.14em] backdrop-blur-md transition hover:border-accent/40 hover:bg-glass-strong ${
+                tight ? "h-9 w-9" : "h-10 w-10 lg:h-auto lg:w-auto lg:gap-2 lg:px-4 lg:py-2.5"
+              }`}
+            >
+              <FiLinkedin className="text-base" aria-hidden />
+              <span className={tight ? "sr-only" : "sr-only lg:not-sr-only"}>LinkedIn</span>
             </a>
             <button
               type="button"
@@ -113,10 +158,12 @@ export function Header() {
               aria-expanded={reading}
               aria-controls="reading-drawer"
               aria-label={t.reading.open[lang]}
-              className="flex items-center gap-2 rounded-full border border-line bg-glass px-3 py-2.5 text-[12px] font-medium uppercase tracking-[0.14em] backdrop-blur-md transition hover:border-accent/40 hover:bg-glass-strong sm:px-5"
+              className={`flex items-center justify-center rounded-full border border-line bg-glass text-[12px] font-medium uppercase tracking-[0.14em] backdrop-blur-md transition hover:border-accent/40 hover:bg-glass-strong ${
+                tight ? "h-9 w-9" : "gap-2 px-3 py-2.5 sm:px-5"
+              }`}
             >
               <FiBookOpen className="text-sm" aria-hidden />
-              <span className="hidden sm:inline">{t.reading.open[lang]}</span>
+              <span className={tight ? "sr-only" : "hidden sm:inline"}>{t.reading.open[lang]}</span>
             </button>
             <button
               type="button"
@@ -126,23 +173,26 @@ export function Header() {
               }}
               aria-expanded={open}
               aria-controls="site-menu"
-              className="flex items-center gap-3 rounded-full bg-glass-strong px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.14em] backdrop-blur-md transition hover:bg-glass-hover"
+              aria-label={open ? t.nav.close[lang] : t.nav.menu[lang]}
+              className={`flex items-center justify-center rounded-full bg-glass-strong text-[12px] font-medium uppercase tracking-[0.14em] backdrop-blur-md transition hover:bg-glass-hover ${
+                tight ? "h-9 w-9" : "gap-3 px-5 py-2.5"
+              }`}
             >
-              {open ? t.nav.close[lang] : t.nav.menu[lang]}
-              <span className="flex gap-1" aria-hidden>
-                <motion.span
-                  animate={{ y: open ? -2 : 0 }}
-                  className="h-1 w-1 rounded-full bg-ink"
-                />
-                <motion.span
-                  animate={{ y: open ? 2 : 0 }}
-                  className="h-1 w-1 rounded-full bg-ink"
-                />
-              </span>
+              {tight ? (
+                open ? <FiX className="text-base" aria-hidden /> : <FiMenu className="text-base" aria-hidden />
+              ) : (
+                <>
+                  {open ? t.nav.close[lang] : t.nav.menu[lang]}
+                  <span className="flex gap-1" aria-hidden>
+                    <motion.span animate={{ y: open ? -2 : 0 }} className="h-1 w-1 rounded-full bg-ink" />
+                    <motion.span animate={{ y: open ? 2 : 0 }} className="h-1 w-1 rounded-full bg-ink" />
+                  </span>
+                </>
+              )}
             </button>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       <AnimatePresence>
         {open && (

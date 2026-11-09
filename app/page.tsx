@@ -7,10 +7,13 @@ import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { Panel } from "@/components/Panel";
 import { BlogTeaser } from "@/components/BlogTeaser";
+import { DocsTeaser } from "@/components/DocsTeaser";
 import { getAllPosts } from "@/lib/blog";
+import { getManual } from "@/lib/docs";
 
 export default function HomePage() {
   const posts = getAllPosts();
+  const manual = getManual();
   return (
     <main className="relative min-h-screen">
       <Header />
@@ -30,6 +33,9 @@ export default function HomePage() {
         <BlogTeaser posts={posts} />
       </Panel>
       <Panel className="bg-panel">
+        <DocsTeaser manual={manual} />
+      </Panel>
+      <Panel className="bg-canvas">
         <Contact />
         <Footer />
       </Panel>
