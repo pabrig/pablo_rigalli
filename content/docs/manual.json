@@ -1,32 +1,52 @@
 {
-  "title": {
-    "es": "Manual",
-    "en": "Docs"
-  },
-  "description": {
-    "es": "Documentación técnica. Funcionamiento, contratos y límites.",
-    "en": "Technical documentation. Behavior, contracts, and limits."
-  },
   "chapters": [
     {
       "id": "diseno-de-software",
       "order": 1,
-      "title": { "es": "Diseño de software", "en": "Software design" }
+      "title": {
+        "es": "Diseño de software",
+        "en": "Software design"
+      }
     },
     {
       "id": "contenedores",
       "order": 2,
-      "title": { "es": "Contenedores", "en": "Containers" }
+      "title": {
+        "es": "Contenedores",
+        "en": "Containers"
+      }
     },
     {
       "id": "backend",
       "order": 3,
-      "title": { "es": "Backend", "en": "Backend" }
+      "title": {
+        "es": "Backend",
+        "en": "Backend"
+      }
     },
     {
       "id": "frontend",
       "order": 4,
-      "title": { "es": "Frontend", "en": "Frontend" }
+      "title": {
+        "es": "Frontend",
+        "en": "Frontend"
+      }
+    },
+    {
+      "id": "inteligencia-artificial",
+      "order": 5,
+      "title": {
+        "es": "Inteligencia Artificial",
+        "en": "Artificial Intelligence"
+      }
+    },
+    {
+      "id": "sistemas-distribuidos",
+      "order": 6,
+      "title": {
+        "es": "Sistemas distribuidos",
+        "en": "Distributed systems"
+      }
     }
   ]
 }
