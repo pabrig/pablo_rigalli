@@ -11,6 +11,22 @@ tags:
 published: true
 ---
 
+## Contexto
+
+Un LLM en producción no es una API determinista: la latencia varía, la ventana de tokens es finita y la salida puede inventar hechos.
+
+## Decisión
+
+Tratar el modelo como una dependencia acotada. Contrato de salida, RAG cuando el conocimiento no entra en el prompt, y validación antes de actuar sobre la respuesta.
+
+## Trade-offs
+
+RAG ancla la respuesta a fuentes y suma índice, frescura y costo de retrieval. Una ventana más grande compra contexto y paga latencia y precio.
+
+## Resultado
+
+El modelo propone y el contrato verifica. Menos alucinaciones en el camino crítico, y un ciclo de desarrollo guiado por specs.
+
 ## Fundamentos de integración de LLMs y contratos de API
 
 La integración de grandes modelos de lenguaje (LLMs) en aplicaciones productivas exige tratar al modelo como una dependencia no determinista dentro del sistema. A diferencia de las APIs tradicionales con respuestas predictibles, las llamadas a servicios de LLM (como OpenAI, Anthropic o modelos locales orquestados con Ollama) introducen latencia variable y salidas probabilísticas que deben ser acotadas mediante contratos de interfaz rigurosos.

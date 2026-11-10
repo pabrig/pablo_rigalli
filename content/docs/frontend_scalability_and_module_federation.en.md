@@ -12,6 +12,22 @@ tags:
 published: true
 ---
 
+## Context
+
+Several teams on one frontend end up fighting over a monolith: coupled deploys, long builds and release collisions.
+
+## Decision
+
+Integrate microfrontends at runtime with Module Federation, shared dependencies as singletons, and communication only through contracts — events, URL or types — not cross-imports.
+
+## Trade-offs
+
+Runtime federation decouples deploys, but it requires governing Core Web Vitals and a single React instance. Build-time packages are easier to cache and worse for team independence.
+
+## Outcome
+
+Teams ship their slice of UI on their own, with a host that loads remotes on demand and does not duplicate React in memory.
+
 ## Arquitectura de Microfrontends y desacoplamiento de equipos
 
 As organizations scale and multiple cross-functional teams build on the same web application, traditional monolithic frontends face deployment bottlenecks, version control conflicts, and unacceptable build times. Microfrontend architecture extends microservice principles into the browser, allowing independent teams to build, test, and deploy autonomous user interface slices (*MFEs*).

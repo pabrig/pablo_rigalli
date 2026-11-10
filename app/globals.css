@@ -168,6 +168,7 @@ body {
   background: var(--canvas);
   color: var(--ink);
   letter-spacing: -0.004em;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -210,10 +211,13 @@ body {
 }
 
 .blog-prose {
+  max-width: 100%;
+  min-width: 0;
   color: var(--ink);
   font-size: 1.125rem;
   line-height: 1.75;
   letter-spacing: -0.008em;
+  overflow-wrap: break-word;
 }
 
 .blog-prose > * + * {
@@ -337,18 +341,54 @@ body {
   font-family: ui-monospace, monospace;
   font-size: 0.88em;
   color: var(--prose-code);
+  overflow-wrap: anywhere;
 }
 
 .blog-prose .blog-pre {
+  max-width: 100%;
   margin-top: 1.5em;
   margin-bottom: 1.5em;
   overflow-x: auto;
+  overscroll-behavior-x: contain;
   border-radius: 12px;
   border: 1px solid var(--line);
   background: var(--code-surface);
   padding: 1rem 1.15rem;
   font-size: 0.9rem;
   line-height: 1.55;
+}
+
+.blog-table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.blog-table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.blog-th,
+.blog-td {
+  padding: 0.65rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line);
+}
+
+.blog-th {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .blog-prose .blog-pre code {
@@ -407,6 +447,11 @@ body {
 .docs-prose .blog-h3,
 .docs-prose .blog-h4 {
   scroll-margin-top: 7rem;
+}
+
+.docs-prose .adr-h2 {
+  padding-left: 0.85rem;
+  border-left: 2px solid var(--accent);
 }
 
 .reading-range {

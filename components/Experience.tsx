@@ -45,15 +45,26 @@ function RoleCard({
     <motion.article
       ref={ref}
       style={{ scale, opacity, borderColor }}
-      className="group relative flex h-[56vh] min-h-[400px] w-[82vw] shrink-0 flex-col justify-between overflow-hidden rounded-[24px] border bg-elevated p-6 sm:w-[460px] md:p-8"
+      className="group relative flex h-auto max-h-[72vh] min-h-[440px] w-[86vw] shrink-0 flex-col justify-between overflow-x-hidden overflow-y-auto rounded-[24px] border bg-elevated p-6 sm:w-[480px] md:p-8"
     >
       <motion.div style={{ x: innerX }}>
         <p className="text-[11px] uppercase tracking-[0.2em] text-muted">{role.period[lang]}</p>
-        <h3 className="mt-8 font-serif text-4xl leading-none md:text-5xl">{role.company}</h3>
+        <h3 className="mt-5 font-serif text-4xl leading-none md:text-5xl">{role.company}</h3>
         <p className="mt-3 text-sm text-soft">
           {role.title[lang]} · {role.location[lang]}
         </p>
-        <p className="mt-5 text-sm leading-relaxed text-muted">{role.summary[lang]}</p>
+        <p className="mt-3 text-[11px] uppercase tracking-[0.16em] text-accent">{role.signal[lang]}</p>
+        <ul className="mt-3 flex flex-wrap gap-1.5">
+          {role.stack.map((tag) => (
+            <li
+              key={tag}
+              className="rounded-full border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted"
+            >
+              {tag}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 text-sm leading-relaxed text-muted">{role.summary[lang]}</p>
       </motion.div>
       <ul className="space-y-2 border-t border-line pt-5 text-sm">
         {role.highlights[lang].map((item) => (

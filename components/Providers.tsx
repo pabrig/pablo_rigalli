@@ -16,7 +16,8 @@ function SmoothScroll() {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       wheelMultiplier: 0.9,
       touchMultiplier: 1.4,
-      anchors: { duration: 1.6 }
+      anchors: { duration: 1.6 },
+      allowNestedScroll: true
     });
     lenisRef.current = lenis;
     let frame = requestAnimationFrame(function raf(time) {

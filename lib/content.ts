@@ -25,7 +25,7 @@ export const copy = {
     experience: { es: "Trayectoria", en: "Experience" },
     stack: { es: "IA & Stack", en: "AI & Stack" },
     blog: { es: "Blog", en: "Blog" },
-    docs: { es: "Manual", en: "Docs" },
+    // docs: { es: "Notas", en: "Notes" },
     contact: { es: "Contacto", en: "Contact" },
     talk: { es: "Hablemos", en: "Let’s talk" },
     menu: { es: "Menú", en: "Menu" },
@@ -70,7 +70,9 @@ export const copy = {
     primary: { es: "Hablemos de tu producto", en: "Let’s talk about your product" },
     secondary: { es: "Ver trayectoria", en: "See experience" },
     downloadCv: { es: "Descargar CV", en: "Download CV" },
-    scheduleMeet: { es: "Agendar meet", en: "Book a call" },
+    scheduleMeet: { es: "Agendar Meet", en: "Book a call" },
+    linkedin: "LinkedIn",
+    stack: ["React", "Next.js", "TypeScript", "Node.js", "NestJS", "GraphQL", "AI-Augmented DX"],
     scroll: { es: "Scroll para explorar", en: "Scroll to explore" },
     layers: {
       es: ["Producto", "Experiencia", "APIs", "Arquitectura"],
@@ -150,19 +152,24 @@ export const copy = {
         title: { es: "Sr Software Engineer", en: "Sr Software Engineer" },
         location: { es: "LATAM · remoto", en: "LATAM · remote" },
         summary: {
-          es: "Compañía de tecnología con base en Paraguay: core financiero, digitalización y productos de software para empresas. Rol senior de ingeniería con foco en producto, arquitectura y calidad de entrega.",
-          en: "Paraguay-based technology company: financial core, digitalization and enterprise software products. Senior engineering role focused on product, architecture and delivery quality."
+          es: "Compañía de tecnología con base en Paraguay: core financiero, digitalización y productos de software para empresas. Lidero decisiones de arquitectura y calidad de entrega en sistemas que más de un producto comparte.",
+          en: "Paraguay-based technology company: financial core, digitalization and enterprise software products. I lead architecture and delivery quality on systems more than one product shares."
         },
+        signal: {
+          es: "Core financiero · credit scoring · multi-tenant",
+          en: "Financial core · credit scoring · multi-tenant"
+        },
+        stack: ["TypeScript", "React", "Micro-frontends", "AI DX"],
         highlights: {
           es: [
-            "Aporto criterio senior para que las decisiones técnicas sirvan al producto, no solo al ticket.",
-            "Trabajo en entornos de entrega continua: arquitectura, integraciones, testing y DX.",
-            "Uso IA para acelerar exploración y implementación, manteniendo rigor de ingeniería."
+            "Arquitectura del core financiero en producción: micro-frontends y la plataforma de credit scoring, con límites que aguantan más de un producto.",
+            "Componentes compartidos multi-tenant para que varios equipos entreguen sobre el mismo sistema sin acoplar el release.",
+            "Flujos de IA en el IDE — agentes, contexto del repo vía MCP y review asistido — que acortan exploración e implementación, con tests en el camino a producción."
           ],
           en: [
-            "I bring senior judgment so technical decisions serve the product, not just the ticket.",
-            "I work in continuous-delivery environments: architecture, integrations, testing and DX.",
-            "I use AI to accelerate exploration and implementation without dropping engineering rigor."
+            "Production architecture for the financial core: micro-frontends and the credit-scoring platform, with boundaries that hold up across more than one product.",
+            "Shared multi-tenant components so several teams ship on the same system without coupling releases.",
+            "AI workflows in the IDE — agents, repo context via MCP and assisted review — that shorten exploration and implementation, with tests on the path to production."
           ]
         }
       },
@@ -172,19 +179,24 @@ export const copy = {
         title: { es: "Software Developer Engineer", en: "Software Developer Engineer" },
         location: { es: "Estados Unidos · remoto", en: "United States · remote" },
         summary: {
-          es: "Consultora de software y AI que diseña y desarrolla productos para clientes en EE.UU. y LATAM. Evolucioné de frontend specialist a ingeniero de software con responsabilidad de punta a punta.",
-          en: "Software and AI consultancy that designs and builds products for U.S. and LATAM clients. I grew from frontend specialist to software engineer with end-to-end ownership."
+          es: "Consultora de software y AI que diseña y desarrolla productos para clientes en EE.UU. y LATAM. Pasé de frontend a ownership de punta a punta en arquitecturas de e-commerce.",
+          en: "Software and AI consultancy that designs and builds products for U.S. and LATAM clients. I moved from frontend into end-to-end ownership on e-commerce architectures."
         },
+        signal: {
+          es: "E-commerce · clientes US/LATAM · integraciones E2E",
+          en: "E-commerce · US/LATAM clients · E2E integrations"
+        },
+        stack: ["React", "Next.js", "NestJS", "GraphQL", "Module Federation"],
         highlights: {
           es: [
-            "Participé en el diseño y desarrollo de productos web con React, Next.js e integraciones de API.",
-            "Aporté arquitectura frontend, testing y calidad en delivery para clientes de consultoría.",
-            "Experiencia de dominio en logística comercial y productos con lógica de negocio compleja."
+            "Arquitecturas de e-commerce para clientes internacionales: Module Federation en el frontend, NestJS y GraphQL en el contrato.",
+            "Integraciones E2E con contratos tipados y caminos de fallo explícitos, para que un release no dependa del happy path.",
+            "Delivery de la interfaz al API en equipos distribuidos, con dominio en logística comercial y reglas de negocio no triviales."
           ],
           en: [
-            "Designed and built web products with React, Next.js and API integrations.",
-            "Contributed frontend architecture, testing and delivery quality in a consulting context.",
-            "Domain experience in commercial logistics and products with non-trivial business logic."
+            "E-commerce architectures for international clients: Module Federation on the frontend, NestJS and GraphQL on the contract.",
+            "E2E integrations with typed contracts and explicit failure paths, so a release does not depend on the happy path.",
+            "Delivery from interface to API on distributed teams, including commercial logistics and non-trivial business rules."
           ]
         }
       },
@@ -194,17 +206,22 @@ export const copy = {
         title: { es: "Frontend Developer", en: "Frontend Developer" },
         location: { es: "Estados Unidos · remoto", en: "United States · remote" },
         summary: {
-          es: "Construcción de experiencias de usuario para productos de clientes, con React como núcleo y un estándar alto de interfaz, performance y colaboración con diseño y backend.",
-          en: "Built user experiences for client products, with React at the core and a high bar for interface, performance and collaboration with design and backend."
+          es: "Experiencias de producto para clientes internacionales, con React como núcleo y una vara alta de interfaz, performance y colaboración con diseño y backend.",
+          en: "Product experiences for international clients, with React at the core and a high bar for interface, performance and collaboration with design and backend."
         },
+        signal: {
+          es: "UI de producto · clientes internacionales",
+          en: "Product UI · international clients"
+        },
+        stack: ["React", "TypeScript", "Next.js"],
         highlights: {
           es: [
-            "Implementé interfaces de producto en React para equipos distribuidos y clientes internacionales.",
-            "Traduje diseño y requerimientos en experiencias usables, mantenibles y listas para producción."
+            "Interfaces de producto en React para equipos distribuidos y clientes internacionales, entregadas a producción.",
+            "Diseño y requerimientos convertidos en UI mantenible, con performance y handoff directo con diseño y backend."
           ],
           en: [
-            "Shipped React product interfaces for distributed teams and international clients.",
-            "Turned design and requirements into usable, maintainable, production-ready experiences."
+            "React product interfaces for distributed teams and international clients, shipped to production.",
+            "Design and requirements turned into maintainable UI, with performance and a direct handoff to design and backend."
           ]
         }
       },
@@ -217,6 +234,11 @@ export const copy = {
           es: "Desarrollo frontend para productos de contenidos digitales: interfaces, layouts y experiencia web orientada a publicación y consumo de contenido.",
           en: "Frontend development for digital-content products: interfaces, layout and web experience oriented to publishing and consumption."
         },
+        signal: {
+          es: "Contenidos digitales · mercado hispano",
+          en: "Digital content · Spanish-speaking market"
+        },
+        stack: ["JavaScript", "HTML", "CSS"],
         highlights: {
           es: [
             "Construí y mantuve experiencias web para un producto de contenidos en el mercado hispano."
@@ -235,6 +257,11 @@ export const copy = {
           es: "Desarrollo frontend en una boutique de soluciones móviles y digitales. Base de mi carrera profesional en interfaces, JavaScript y entrega con equipos de producto.",
           en: "Frontend development at a mobile and digital solutions studio. The foundation of my professional path in interfaces, JavaScript and shipping with product teams."
         },
+        signal: {
+          es: "Interfaces · equipos de producto",
+          en: "Interfaces · product teams"
+        },
+        stack: ["JavaScript", "UI"],
         highlights: {
           es: [
             "Aporté interfaces y lógica de presentación en productos digitales para clientes locales."
@@ -253,6 +280,11 @@ export const copy = {
           es: "Desarrollo web en un entorno de ingeniería en sistemas: sitios y soluciones a medida, con foco en maquetado, JavaScript y necesidades reales de negocio.",
           en: "Web development in a systems-engineering environment: custom sites and solutions, focused on layout, JavaScript and real business needs."
         },
+        signal: {
+          es: "Primeras entregas web",
+          en: "Early web deliveries"
+        },
+        stack: ["JavaScript", "HTML"],
         highlights: {
           es: ["Primeras entregas profesionales de software web para un estudio de ingeniería."],
           en: ["Early professional web deliveries for a systems-engineering firm."]
@@ -444,6 +476,7 @@ export const copy = {
     keepReading: { es: "Seguí leyendo", en: "Keep reading" },
     moreFrom: { es: "Más en el blog", en: "More on the blog" },
     continueReading: { es: "Continuar leyendo", en: "Continue reading" },
+    relatedNotes: { es: "Notas de arquitectura", en: "Architecture notes" },
     viewAll: { es: "Ver todos los artículos", en: "View all articles" },
     readMoreEmpty: {
       es: "Hay más en el blog",
@@ -479,32 +512,39 @@ export const copy = {
       allPosts: { es: "Más posts", en: "More posts" }
     }
   },
-  docs: {
-    index: { es: "Índice", en: "Index" },
-    search: { es: "Buscar en el manual", en: "Search the manual" },
-    tags: { es: "Temas", en: "Topics" },
-    all: { es: "Todos", en: "All" },
-    onThisPage: { es: "En esta sección", en: "In this section" },
-    empty: { es: "Nada coincide con esa búsqueda.", en: "Nothing matches that search." },
-    prev: { es: "Anterior", en: "Previous" },
-    next: { es: "Siguiente", en: "Next" },
-    emptyManual: {
-      es: "El manual todavía no tiene secciones.",
-      en: "The manual has no sections yet."
-    },
-    teaser: {
-      eyebrow: { es: "Manual", en: "Docs" },
-      title: {
-        es: "Documentación técnica.",
-        en: "Technical documentation."
-      },
-      body: {
-        es: "Funcionamiento, contratos y límites.",
-        en: "Behavior, contracts, and limits."
-      },
-      open: { es: "Abrir el manual", en: "Open the manual" }
-    }
-  },
+  // docs: {
+  //   index: { es: "Índice", en: "Index" },
+  //   search: { es: "Buscar en las notas", en: "Search the notes" },
+  //   tags: { es: "Temas", en: "Topics" },
+  //   all: { es: "Todos", en: "All" },
+  //   onThisPage: { es: "En esta nota", en: "On this note" },
+  //   empty: { es: "Nada coincide con esa búsqueda.", en: "Nothing matches that search." },
+  //   prev: { es: "Anterior", en: "Previous" },
+  //   next: { es: "Siguiente", en: "Next" },
+  //   kind: { es: "ADR", en: "ADR" },
+  //   kicker: { es: "Notas de arquitectura", en: "Architecture notes" },
+  //   header: {
+  //     es: "Engineering Logs & ADRs — Decisiones de arquitectura y aprendizajes de proyectos reales.",
+  //     en: "Engineering Logs & ADRs — Architecture decisions and lessons from real projects."
+  //   },
+  //   relatedBlog: { es: "En el blog", en: "On the blog" },
+  //   emptyManual: {
+  //     es: "Las notas todavía no tienen secciones.",
+  //     en: "The notes have no sections yet."
+  //   },
+  //   teaser: {
+  //     eyebrow: { es: "Notas de arquitectura", en: "Architecture notes" },
+  //     title: {
+  //       es: "Engineering Logs & ADRs — Decisiones de arquitectura y aprendizajes de proyectos reales.",
+  //       en: "Engineering Logs & ADRs — Architecture decisions and lessons from real projects."
+  //     },
+  //     body: {
+  //       es: "Cada nota está escrita como un ADR: contexto, decisión, trade-offs y resultado.",
+  //       en: "Each note is written as an ADR: context, decision, trade-offs and outcome."
+  //     },
+  //     open: { es: "Leer las notas", en: "Read the notes" }
+  //   }
+  // },
   contact: {
     eyebrow: { es: "Siguiente paso", en: "Next step" },
     title: {

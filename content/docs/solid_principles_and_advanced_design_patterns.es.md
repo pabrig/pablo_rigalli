@@ -11,6 +11,22 @@ tags:
 published: true
 ---
 
+## Contexto
+
+En un sistema grande el problema no es que el código arranque. Es que un cambio en un módulo no debería romper los demás.
+
+## Decisión
+
+Aplicar SOLID — sobre todo inversión de dependencias — y patrones como Factory o Strategy solo donde aíslan una variación real.
+
+## Trade-offs
+
+Una interfaz por cada variación imaginada es ruido. Una dependencia concreta en el núcleo hace que el próximo cambio de proveedor toque el dominio.
+
+## Resultado
+
+Módulos que cambian por una sola razón, con la variación detrás de un contrato chico.
+
 ## Aplicación práctica de SOLID en sistemas complejos
 
 Los principios SOLID no son meras reglas teóricas de libros de texto, sino restricciones de diseño orientadas a minimizar el impacto del cambio. En sistemas de software grandes, el principal desafío no es hacer que el código funcione inicialmente, sino garantizar que pueda evolucionar sin provocar efectos colaterales (*side effects*) en módulos independientes.
