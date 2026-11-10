@@ -10,6 +10,22 @@ tags:
 published: true
 ---
 
+## Context
+
+The cost is in maintaining and changing the code, not in the first version. An abstraction that arrives too early is also debt.
+
+## Decision
+
+Use SOLID, KISS, DRY and YAGNI as constraints on change, not as a checklist. Pick a pattern once the problem has already repeated.
+
+## Trade-offs
+
+Less abstraction now means tolerable duplication. More abstraction now means a reading cost the team pays on every change.
+
+## Outcome
+
+Design that speeds up real product change and holds back over-engineering.
+
 ## Context and the Design Problem
 
 The real cost of software development does not lie in writing the initial code, but in its maintenance, readability, and evolution over time. In projects with a long lifecycle, a rushed design decision or a forced abstraction creates technical debt that slows down the team's delivery velocity.

@@ -6,19 +6,22 @@ import { DocsOutline } from "@/components/DocsOutline";
 import { useCopy } from "@/lib/language";
 import type { Lang } from "@/lib/content";
 import type { DocsPage, DocsPageMeta } from "@/lib/docs/types";
+import { noteHref, type RelatedLink } from "@/lib/paths";
 
 export function DocsArticle({
   page,
   chapterTitle,
   chapterNumber,
   prev,
-  next
+  next,
+  relatedPosts = []
 }: {
   page: DocsPage;
   chapterTitle: Record<Lang, string>;
   chapterNumber: string;
   prev: DocsPageMeta | null;
   next: DocsPageMeta | null;
+  relatedPosts?: RelatedLink[];
 }) {
   const { lang, t } = useCopy();
   const headings = page.headings[lang];
@@ -26,7 +29,8 @@ export function DocsArticle({
 
   return (
     <article className="min-w-0 pb-8">
-      <p className="flex items-baseline gap-2 text-[11px] uppercase tracking-[0.22em] text-muted">
+      <p className="flex flex-wrap items-baseline gap-2 text-[11px] uppercase tracking-[0.22em] text-muted">
+        <span className="rounded-full border border-accent/40 px-2 py-0.5 text-accent">{t.docs.kind[lang]}</span>
         {chapterNumber ? <span className="font-mono text-[12px] tracking-normal text-soft">{chapterNumber}</span> : null}
         <span>{chapterTitle[lang]}</span>
       </p>
@@ -62,10 +66,25 @@ export function DocsArticle({
         />
       </div>
 
+      {relatedPosts.length > 0 ? (
+        <aside className="mt-12 border-t border-line pt-6">
+          <p className="text-[11px] uppercase tracking-[0.22em] text-soft">{t.docs.relatedBlog[lang]}</p>
+          <ul className="mt-3 space-y-2">
+            {relatedPosts.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="font-serif text-lg leading-snug text-ink transition hover:text-accent">
+                  {item.title[lang]}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      ) : null}
+
       <nav className="mt-16 grid gap-3 border-t border-line pt-8 sm:grid-cols-2">
         {prev ? (
           <Link
-            href={`/docs/${prev.slug}`}
+            href={noteHref(prev.slug)}
             className="rounded-2xl border border-line px-4 py-4 transition hover:border-accent/40"
           >
             <span className="text-[11px] uppercase tracking-[0.18em] text-muted">{t.docs.prev[lang]}</span>
@@ -79,7 +98,7 @@ export function DocsArticle({
         )}
         {next ? (
           <Link
-            href={`/docs/${next.slug}`}
+            href={noteHref(next.slug)}
             className="rounded-2xl border border-line px-4 py-4 transition hover:border-accent/40 sm:text-right"
           >
             <span className="text-[11px] uppercase tracking-[0.18em] text-muted">{t.docs.next[lang]}</span>

@@ -16,6 +16,15 @@ export function blogPostUrl(slug: string, lang?: Lang): string {
   return `${SITE_URL}${blogPostPath(slug, lang)}`;
 }
 
+export function defaultOgImage(alt = "Pablo Rigalli — Senior Software & Product-Minded Engineer") {
+  return {
+    url: `${SITE_URL}${DEFAULT_OG_IMAGE_PATH}`,
+    width: 1200,
+    height: 630,
+    alt
+  };
+}
+
 export function resolveOgImageUrl(image?: string): string {
   const fallback = `${SITE_URL}${DEFAULT_OG_IMAGE_PATH}`;
   const raw = image?.trim();

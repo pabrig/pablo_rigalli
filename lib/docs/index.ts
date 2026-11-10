@@ -27,7 +27,7 @@ function localeText(value: Record<string, string> | undefined, fallback: string)
 
 function readManualFile(): { title: Record<Lang, string>; description: Record<Lang, string>; chapters: DocsChapter[] } {
   const empty = {
-    title: { es: "Manual", en: "Docs" },
+    title: { es: "Notas", en: "Notes" },
     description: { es: "", en: "" },
     chapters: [] as DocsChapter[]
   };
@@ -44,7 +44,7 @@ function readManualFile(): { title: Record<Lang, string>; description: Record<La
     .map((chapter, index) => ({ ...chapter, number: String(index + 1) }));
 
   return {
-    title: localeText(parsed.title, "Manual"),
+    title: localeText(parsed.title, "Notas"),
     description: localeText(parsed.description, ""),
     chapters
   };

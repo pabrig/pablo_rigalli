@@ -13,6 +13,7 @@ import {
   useTransform,
   type MotionValue
 } from "framer-motion";
+import { FiLinkedin } from "react-icons/fi";
 import { useCopy } from "@/lib/language";
 import { bookingUrl, cvDownload } from "@/lib/links";
 
@@ -382,9 +383,46 @@ export function Hero() {
               <br />
               <span className="text-soft">{profile.kicker[lang]}</span>
             </motion.p>
-            <h1 className="text-[clamp(2rem,min(4.4vw,6.4vh),3.8rem)] font-light leading-[1.04] tracking-[-0.03em]">
-              <Title key={lang} text={t.hero.title[lang]} />
-            </h1>
+            <div>
+              <h1 className="text-[clamp(2rem,min(4.4vw,6.4vh),3.8rem)] font-light leading-[1.04] tracking-[-0.03em]">
+                <Title key={lang} text={t.hero.title[lang]} />
+              </h1>
+              <ul className="mt-4 flex flex-wrap gap-1.5" aria-label={profile.headline[lang]}>
+                {t.hero.stack.map((item) => (
+                  <li
+                    key={item}
+                    className="rounded-full border border-line bg-glass px-2.5 py-1 font-mono text-[11px] tracking-wide text-soft"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-5 flex flex-wrap gap-2">
+                <a
+                  href={meetUrl || "#contacto"}
+                  {...(meetUrl ? { target: "_blank", rel: "noreferrer" } : {})}
+                  className="rounded-full bg-accent px-5 py-3 text-[12px] font-medium uppercase tracking-[0.14em] text-on-accent transition hover:brightness-110"
+                >
+                  {t.hero.scheduleMeet[lang]}
+                </a>
+                <a
+                  href={cvDownload.href}
+                  download={cvDownload.fileName}
+                  className="rounded-full border border-line bg-glass-strong px-5 py-3 text-[12px] font-medium uppercase tracking-[0.14em] transition hover:border-accent/40"
+                >
+                  {t.hero.downloadCv[lang]}
+                </a>
+                <a
+                  href={profile.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-line bg-glass-strong px-5 py-3 text-[12px] font-medium uppercase tracking-[0.14em] transition hover:border-accent/40"
+                >
+                  <FiLinkedin className="text-sm" aria-hidden />
+                  {t.hero.linkedin}
+                </a>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div
@@ -545,46 +583,17 @@ export function Hero() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, ease, delay: 1.1 }}
-                className="relative flex flex-col gap-6 p-6 md:absolute md:inset-x-0 md:bottom-0 md:flex-row md:items-end md:justify-between md:p-8 lg:p-10"
+                className="relative flex flex-wrap items-end justify-between gap-4 p-6 md:absolute md:inset-x-0 md:bottom-0 md:p-8 lg:p-10"
               >
                 <p className="max-w-md text-sm leading-relaxed text-muted md:text-[15px]">
                   {t.hero.body[lang]}
                 </p>
-                <div className="flex max-w-xl flex-wrap justify-end gap-2 md:max-w-none">
-                  {meetUrl ? (
-                    <a
-                      href={meetUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="rounded-full bg-accent px-6 py-3 text-[12px] font-medium uppercase tracking-[0.14em] text-on-accent transition hover:brightness-110"
-                    >
-                      {t.hero.scheduleMeet[lang]}
-                    </a>
-                  ) : null}
-                  <a
-                    href={`mailto:${profile.email}`}
-                    className={`rounded-full px-6 py-3 text-[12px] font-medium uppercase tracking-[0.14em] backdrop-blur transition ${
-                      meetUrl
-                        ? "bg-glass hover:bg-glass-hover"
-                        : "bg-accent text-on-accent hover:brightness-110"
-                    }`}
-                  >
-                    {t.hero.primary[lang]}
-                  </a>
-                  <a
-                    href={cvDownload.href}
-                    download={cvDownload.fileName}
-                    className="rounded-full border border-line bg-glass px-6 py-3 text-[12px] font-medium uppercase tracking-[0.14em] transition hover:border-accent/40 hover:bg-glass-strong"
-                  >
-                    {t.hero.downloadCv[lang]}
-                  </a>
-                  <a
-                    href="#trayectoria"
-                    className="rounded-full bg-glass px-6 py-3 text-[12px] font-medium uppercase tracking-[0.14em] backdrop-blur transition hover:bg-glass-hover"
-                  >
-                    {t.hero.secondary[lang]}
-                  </a>
-                </div>
+                <a
+                  href="#trayectoria"
+                  className="text-[12px] font-medium uppercase tracking-[0.14em] text-soft transition hover:text-ink"
+                >
+                  {t.hero.secondary[lang]}
+                </a>
               </motion.div>
             </div>
           </motion.div>

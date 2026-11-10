@@ -11,6 +11,22 @@ tags:
 published: true
 ---
 
+## Context
+
+A distributed system is not debugged from local logs. A transaction crosses services, and telemetry without context cannot be joined back together.
+
+## Decision
+
+Standardize traces, metrics and logs with OpenTelemetry, propagate `traceparent` (W3C), choose head or tail sampling on purpose, and control cardinality.
+
+## Trade-offs
+
+Tail sampling sees the full failure and costs a buffer. Head sampling is cheap and can drop the one request that failed. High cardinality makes the time series unusable.
+
+## Outcome
+
+An end-to-end correlated trace, at a telemetry volume the team can afford and actually read during an incident.
+
 ## Pilares de la observabilidad y propagación de contexto
 
 In distributed systems and microservices architectures, observability is the capability to infer the internal state of a system from the telemetry outputs it produces. The foundational base for achieving traceability across multiple network boundaries relies on uncoupling telemetry from individual instances using OpenTelemetry (OTel), standardizing telemetry APIs and collection SDKs.

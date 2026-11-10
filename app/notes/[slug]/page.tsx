@@ -1,8 +1,10 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { DocsArticle } from "@/components/DocsArticle";
-import { SITE_URL } from "@/lib/blog/og";
+import { defaultOgImage, SITE_URL } from "@/lib/blog/og";
 import { getDoc, getDocNeighbors, getDocSlugs, getManual } from "@/lib/docs";
+import { noteHref } from "@/lib/paths";
+import { postsForNote } from "@/lib/related";
 
 type Props = { params: { slug: string } };
 
@@ -12,17 +14,24 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: Props): Metadata {
   const page = getDoc(params.slug);
-  if (!page) return { title: "Manual" };
+  if (!page) return { title: "Notas" };
   return {
     title: page.title.es,
     description: page.description.es,
     openGraph: {
       title: page.title.es,
       description: page.description.es,
-      url: `${SITE_URL}/docs/${page.slug}`,
+      url: `${SITE_URL}${noteHref(page.slug)}`,
       siteName: "Pablo Rigalli",
       locale: "es_AR",
-      type: "article"
+      type: "article",
+      images: [defaultOgImage(page.title.es)]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: page.title.es,
+      description: page.description.es,
+      images: [defaultOgImage(page.title.es).url]
     }
   };
 }
@@ -43,6 +52,7 @@ export default function DocsPage({ params }: Props) {
       chapterNumber={chapter?.number ?? ""}
       prev={prev}
       next={next}
+      relatedPosts={postsForNote(page.slug)}
     />
   );
 }

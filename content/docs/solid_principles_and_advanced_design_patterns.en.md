@@ -11,6 +11,22 @@ tags:
 published: true
 ---
 
+## Context
+
+In a large system the problem is not getting the code to start. It is keeping a change in one module from breaking the others.
+
+## Decision
+
+Apply SOLID — especially dependency inversion — and patterns such as Factory or Strategy only where they isolate a variation that already exists.
+
+## Trade-offs
+
+An interface for every imagined variation is noise. A concrete dependency in the core means the next provider change touches the domain.
+
+## Outcome
+
+Modules that change for one reason, with the variation behind a small contract.
+
 ## Aplicación práctica de SOLID en sistemas complejos
 
 SOLID principles are not mere theoretical rules from textbooks, but design constraints aimed at minimizing the blast radius of software change. In large enterprise systems, the primary challenge is not making code work initially, but ensuring it can evolve without triggering unwanted side effects in unrelated modules.

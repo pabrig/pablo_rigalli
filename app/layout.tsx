@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
 import { READING_BOOT_SCRIPT } from "@/lib/reading-prefs";
+import { defaultOgImage, SITE_URL } from "@/lib/blog/og";
 
 const sans = Inter_Tight({
   subsets: ["latin"],
@@ -48,13 +49,18 @@ export const metadata: Metadata = {
     template: "%s · Pablo Rigalli"
   },
   description:
-    "Ingeniero senior con mirada de producto. Arquitectura, React/Next.js, APIs e IA aplicada a DX. itti · Acid Labs. Argentina, remoto.",
+    "Senior Software & Product-Minded Engineer. React, Next.js, TypeScript, Node.js, NestJS, GraphQL, AI-Augmented DX. itti · Acid Labs. Argentina, remoto.",
   keywords: [
     "Pablo Rigalli",
     "Senior Software Engineer",
     "Product-Minded Engineer",
     "React",
     "Next.js",
+    "TypeScript",
+    "Node.js",
+    "NestJS",
+    "GraphQL",
+    "AI-Augmented DX",
     "itti",
     "Acid Labs"
   ],
@@ -62,16 +68,19 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Pablo Rigalli — Senior Software & Product-Minded Engineer",
     description:
-      "Construyo productos digitales donde la arquitectura y el negocio se encuentran.",
-    url: "https://pablo-rigalli.vercel.app",
+      "React, Next.js, TypeScript, Node.js, NestJS, GraphQL, AI-Augmented DX. Arquitectura y producto, de la interfaz a la API.",
+    url: SITE_URL,
     siteName: "Pablo Rigalli",
     locale: "es_AR",
-    type: "website"
+    type: "website",
+    images: [defaultOgImage()]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pablo Rigalli — Product-Minded Engineer",
-    description: "Arquitectura, producto y DX aumentada con IA."
+    title: "Pablo Rigalli — Senior Software & Product-Minded Engineer",
+    description:
+      "React, Next.js, TypeScript, Node.js, NestJS, GraphQL, AI-Augmented DX.",
+    images: [defaultOgImage().url]
   }
 };
 

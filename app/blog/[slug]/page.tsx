@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { BlogArticle } from "@/components/BlogArticle";
 import { getAllPosts, getAllSlugs, getPostBySlug } from "@/lib/blog";
 import { blogPostMetadata } from "@/lib/blog/og";
+import { notesForPost } from "@/lib/related";
 
 type Props = { params: { slug: string } };
 
@@ -24,5 +25,5 @@ export default function BlogPostPage({ params }: Props) {
     .filter((p) => p.slug !== post.slug)
     .slice(0, 3);
 
-  return <BlogArticle post={post} morePosts={morePosts} />;
+  return <BlogArticle post={post} morePosts={morePosts} relatedNotes={notesForPost(post.slug)} />;
 }

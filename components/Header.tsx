@@ -2,7 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FiArrowUpRight, FiBookOpen, FiCalendar, FiDownload, FiLinkedin, FiMenu, FiX } from "react-icons/fi";
+import {
+  FiArrowUpRight,
+  FiBookOpen,
+  FiCalendar,
+  FiDownload,
+  FiLinkedin,
+  FiMenu,
+  FiX
+} from "react-icons/fi";
 import { useLanguage } from "@/lib/language";
 import { bookingUrl, cvDownload } from "@/lib/links";
 import { lenisRef } from "./Providers";
@@ -20,7 +28,10 @@ export function Header() {
     const onScroll = () => setCompact(window.scrollY > 48);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    const timer = window.setTimeout(() => lenisRef.current?.on("scroll", onScroll), 0);
+    const timer = window.setTimeout(
+      () => lenisRef.current?.on("scroll", onScroll),
+      0
+    );
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.clearTimeout(timer);
@@ -48,14 +59,14 @@ export function Header() {
 
   const meetUrl = bookingUrl();
   const tight = compact && !open && !reading;
-  const meetLabel = lang === "es" ? "Agendar meet" : "Book a call";
+  const meetLabel = t.hero.scheduleMeet[lang];
 
   const links = [
     { href: "/#aporte", label: t.nav.work[lang] },
     { href: "/#trayectoria", label: t.nav.experience[lang] },
     { href: "/#stack", label: t.nav.stack[lang] },
     { href: "/blog", label: t.nav.blog[lang] },
-    { href: "/docs", label: t.nav.docs[lang] },
+    // { href: "/notes", label: t.nav.docs[lang] },
     { href: "/#contacto", label: t.nav.contact[lang] }
   ];
 
@@ -63,7 +74,9 @@ export function Header() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 ${
-          tight ? "border-b border-line bg-canvas/80 backdrop-blur-md" : "border-b border-transparent"
+          tight
+            ? "border-b border-line bg-canvas/80 backdrop-blur-md"
+            : "border-b border-transparent"
         }`}
       >
         <div
@@ -74,7 +87,9 @@ export function Header() {
           <a
             href="/#top"
             className={`font-medium uppercase transition-all duration-300 ${
-              tight ? "text-[13px] tracking-[0.16em]" : "text-[15px] tracking-[0.22em]"
+              tight
+                ? "text-[13px] tracking-[0.16em]"
+                : "text-[15px] tracking-[0.22em]"
             }`}
           >
             Pablo Rigalli
@@ -88,7 +103,9 @@ export function Header() {
                   type="button"
                   onClick={() => setLang(code)}
                   className={`rounded-full px-2.5 py-1.5 transition ${
-                    lang === code ? "bg-ink text-on-accent" : "text-muted hover:text-ink"
+                    lang === code
+                      ? "bg-ink text-on-accent"
+                      : "text-muted hover:text-ink"
                   }`}
                 >
                   {code}
@@ -102,11 +119,17 @@ export function Header() {
                 rel="noreferrer"
                 aria-label={meetLabel}
                 className={`group items-center justify-center rounded-full bg-accent text-[12px] font-medium uppercase tracking-[0.14em] text-on-accent transition hover:brightness-110 ${
-                  tight ? "hidden h-9 w-9 sm:flex" : "hidden gap-3 px-5 py-2.5 sm:flex"
+                  tight
+                    ? "hidden h-9 w-9 sm:flex"
+                    : "hidden gap-3 px-5 py-2.5 sm:flex"
                 }`}
               >
-                {tight ? <FiCalendar className="text-base" aria-hidden /> : null}
-                <span className={tight ? "sr-only" : undefined}>{meetLabel}</span>
+                {tight ? (
+                  <FiCalendar className="text-base" aria-hidden />
+                ) : null}
+                <span className={tight ? "sr-only" : undefined}>
+                  {meetLabel}
+                </span>
                 {tight ? null : (
                   <span className="h-1.5 w-1.5 rounded-full bg-on-accent transition group-hover:scale-150" />
                 )}
@@ -116,11 +139,17 @@ export function Header() {
                 href={`mailto:${profile.email}`}
                 aria-label={t.nav.talk[lang]}
                 className={`group items-center justify-center rounded-full bg-accent text-[12px] font-medium uppercase tracking-[0.14em] text-on-accent transition hover:brightness-110 ${
-                  tight ? "hidden h-9 w-9 sm:flex" : "hidden gap-3 px-5 py-2.5 sm:flex"
+                  tight
+                    ? "hidden h-9 w-9 sm:flex"
+                    : "hidden gap-3 px-5 py-2.5 sm:flex"
                 }`}
               >
-                {tight ? <FiCalendar className="text-base" aria-hidden /> : null}
-                <span className={tight ? "sr-only" : undefined}>{t.nav.talk[lang]}</span>
+                {tight ? (
+                  <FiCalendar className="text-base" aria-hidden />
+                ) : null}
+                <span className={tight ? "sr-only" : undefined}>
+                  {t.nav.talk[lang]}
+                </span>
                 {tight ? null : (
                   <span className="h-1.5 w-1.5 rounded-full bg-on-accent transition group-hover:scale-150" />
                 )}
@@ -131,7 +160,9 @@ export function Header() {
               download={cvDownload.fileName}
               aria-label="CV"
               className={`items-center justify-center rounded-full border border-line bg-glass text-[12px] font-medium uppercase tracking-[0.14em] backdrop-blur-md transition hover:border-accent/40 hover:bg-glass-lift ${
-                tight ? "hidden h-9 w-9 md:flex" : "hidden px-5 py-2.5 md:inline-flex"
+                tight
+                  ? "hidden h-9 w-9 md:flex"
+                  : "hidden px-5 py-2.5 md:inline-flex"
               }`}
             >
               {tight ? <FiDownload className="text-base" aria-hidden /> : null}
@@ -143,11 +174,15 @@ export function Header() {
               rel="noreferrer"
               aria-label="LinkedIn"
               className={`flex items-center justify-center rounded-full border border-line bg-glass text-[12px] font-medium uppercase tracking-[0.14em] backdrop-blur-md transition hover:border-accent/40 hover:bg-glass-strong ${
-                tight ? "h-9 w-9" : "h-10 w-10 lg:h-auto lg:w-auto lg:gap-2 lg:px-4 lg:py-2.5"
+                tight
+                  ? "h-9 w-9"
+                  : "h-10 w-10 lg:h-auto lg:w-auto lg:gap-2 lg:px-4 lg:py-2.5"
               }`}
             >
               <FiLinkedin className="text-base" aria-hidden />
-              <span className={tight ? "sr-only" : "sr-only lg:not-sr-only"}>LinkedIn</span>
+              <span className={tight ? "sr-only" : "sr-only lg:not-sr-only"}>
+                LinkedIn
+              </span>
             </a>
             <button
               type="button"
@@ -163,7 +198,9 @@ export function Header() {
               }`}
             >
               <FiBookOpen className="text-sm" aria-hidden />
-              <span className={tight ? "sr-only" : "hidden sm:inline"}>{t.reading.open[lang]}</span>
+              <span className={tight ? "sr-only" : "hidden sm:inline"}>
+                {t.reading.open[lang]}
+              </span>
             </button>
             <button
               type="button"
@@ -179,13 +216,23 @@ export function Header() {
               }`}
             >
               {tight ? (
-                open ? <FiX className="text-base" aria-hidden /> : <FiMenu className="text-base" aria-hidden />
+                open ? (
+                  <FiX className="text-base" aria-hidden />
+                ) : (
+                  <FiMenu className="text-base" aria-hidden />
+                )
               ) : (
                 <>
                   {open ? t.nav.close[lang] : t.nav.menu[lang]}
                   <span className="flex gap-1" aria-hidden>
-                    <motion.span animate={{ y: open ? -2 : 0 }} className="h-1 w-1 rounded-full bg-ink" />
-                    <motion.span animate={{ y: open ? 2 : 0 }} className="h-1 w-1 rounded-full bg-ink" />
+                    <motion.span
+                      animate={{ y: open ? -2 : 0 }}
+                      className="h-1 w-1 rounded-full bg-ink"
+                    />
+                    <motion.span
+                      animate={{ y: open ? 2 : 0 }}
+                      className="h-1 w-1 rounded-full bg-ink"
+                    />
                   </span>
                 </>
               )}
@@ -217,7 +264,11 @@ export function Header() {
                       initial={{ y: "110%" }}
                       animate={{ y: 0 }}
                       exit={{ y: "110%" }}
-                      transition={{ duration: 0.7, ease, delay: 0.15 + i * 0.06 }}
+                      transition={{
+                        duration: 0.7,
+                        ease,
+                        delay: 0.15 + i * 0.06
+                      }}
                       className="group flex items-baseline gap-5 font-serif text-5xl leading-[1.05] text-soft transition hover:text-ink md:text-7xl"
                     >
                       <span className="font-sans text-xs tracking-[0.2em] text-muted">

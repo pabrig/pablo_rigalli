@@ -1,4 +1,12 @@
 {
+  "title": {
+    "es": "Notas",
+    "en": "Notes"
+  },
+  "description": {
+    "es": "Engineering Logs & ADRs — Decisiones de arquitectura y aprendizajes de proyectos reales.",
+    "en": "Engineering Logs & ADRs — Architecture decisions and lessons from real projects."
+  },
   "chapters": [
     {
       "id": "diseno-de-software",

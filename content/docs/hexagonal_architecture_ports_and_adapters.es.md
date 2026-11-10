@@ -11,6 +11,22 @@ tags:
 published: true
 ---
 
+## Contexto
+
+Si el dominio depende del ORM o del framework, cada cambio de infraestructura arrastra la lógica de negocio y vuelve lentos los tests.
+
+## Decisión
+
+Aislar el core detrás de puertos de entrada y de salida. Los adaptadores — HTTP, base de datos, colas — viven afuera y traducen DTOs sin contaminar el dominio.
+
+## Trade-offs
+
+Hay más tipos y mapeos en el borde. A cambio, el caso de uso se testea sin infraestructura y el adaptador se puede cambiar sin reescribir reglas.
+
+## Resultado
+
+Un dominio que sobrevive al cambio de framework, con un contrato explícito entre negocio e infraestructura.
+
 ## Filosofía y separación de capas en Hexagonal
 
 La arquitectura hexagonal (también conocida como puertos y adaptadores), popularizada por Alistair Cockburn, busca aislar la lógica de negocio central (*Core Domain*) de los detalles tecnológicos externos como bases de datos, frameworks web, colas de mensajes o interfaces de usuario. En un diseño tradicional en capas acoplado a frameworks, la lógica de negocio suele terminar dependiendo de ORMs o detalles de infraestructura, dificultando las pruebas unitarias y provocando obsolescencia prematura cuando el framework cambia.
