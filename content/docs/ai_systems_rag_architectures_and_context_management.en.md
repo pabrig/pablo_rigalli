@@ -11,22 +11,6 @@ tags:
 published: true
 ---
 
-## Context
-
-A production LLM is not a deterministic API: latency varies, the token window is finite, and the output can invent facts.
-
-## Decision
-
-Treat the model as a bounded dependency. An output contract, RAG when the knowledge does not fit in the prompt, and validation before acting on the answer.
-
-## Trade-offs
-
-RAG grounds the answer in sources and adds an index, freshness work and retrieval cost. A larger window buys context and pays for it in latency and price.
-
-## Outcome
-
-The model proposes and the contract checks. Fewer hallucinations on the critical path, and a spec-driven development cycle.
-
 ## Fundamentos de integración de LLMs y contratos de API
 
 Integrating Large Language Models (LLMs) into production applications requires treating the model as a non-deterministic dependency within the system. Unlike traditional APIs with predictable responses, calls to LLM services (such as OpenAI, Anthropic, or local models orchestrated via Ollama) introduce variable latency and probabilistic outputs that must be bounded through rigorous interface contracts.

@@ -10,22 +10,6 @@ tags:
   - TypeScript
 published: true
 ---
-## Contexto
-
-Una UI que crece sin límites de módulo mezcla estado de servidor, eventos y presentación hasta que un cambio local rompe pantallas lejanas.
-
-## Decisión
-
-Composición tipada, estado de servidor separado del estado de UI, y eventos como contrato entre módulos. Microfrontends o multizone solo cuando el límite del equipo lo justifica.
-
-## Trade-offs
-
-Los microfrontends compran deploys independientes y pagan coordinación de versiones, performance y contratos. Un monolito modular es más simple hasta que el equipo ya no puede releasear junto.
-
-## Resultado
-
-Límites de módulo que se pueden testear y cambiar, con una decisión explícita entre monolito modular, multizone y microfrontends.
-
 ## Composición de componentes y modularidad avanzada
 
 La escalabilidad en el desarrollo de interfaces modernas depende de la capacidad de establecer límites arquitectónicos estrictos en el código del cliente. La distinción tradicional entre componentes *Smart* (con lógica y estado) y *Dumb* (puramente presentacionales) evoluciona hacia patrones de diseño orientados a dominios y composición estricta mediante tipado avanzado en TypeScript.

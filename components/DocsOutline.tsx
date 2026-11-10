@@ -46,7 +46,7 @@ export function DocsOutline({
                 active === heading.id ? "text-ink" : "text-muted hover:text-ink"
               }`}
             >
-              <span className="line-clamp-2">{heading.text}</span>
+              {heading.text}
             </a>
           </li>
         ))}

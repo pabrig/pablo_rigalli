@@ -13,22 +13,6 @@ tags:
 published: true
 ---
 
-## Contexto
-
-Un backend acoplado al framework o a la base se vuelve lento de testear y frágil cuando hay que cambiar transporte, cache o un proveedor.
-
-## Decisión
-
-Separar dominio e infraestructura, diseñar APIs con contratos estables, y tratar latencia, cache y resiliencia como parte del diseño.
-
-## Trade-offs
-
-Más capas y mapeos al inicio. Menos reescritura cuando cambian la base, el protocolo o el tráfico.
-
-## Resultado
-
-Un backend cuyo dominio se prueba solo, y que opera bajo carga con caminos de fallo explícitos.
-
 ## Contexto y el problema del diseño backend
 
 En aplicaciones empresariales y sistemas distribuidos de alto tráfico, la complejidad del software tiende a crecer de forma no lineal. Los sistemas que nacen con arquitecturas acopladas a frameworks o modelos de base de datos específicos terminan sufriendo de fricción operativa: pruebas unitarias lentas, dificultad para migrar componentes de infraestructura y degradación del rendimiento bajo cargas extremas.

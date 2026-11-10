@@ -10,22 +10,6 @@ tags:
   - TypeScript
 published: true
 ---
-## Context
-
-A UI that grows without module boundaries mixes server state, events and presentation until a local change breaks a distant screen.
-
-## Decision
-
-Typed composition, server state kept apart from UI state, and events as the contract between modules. Microfrontends or multizone only when the team boundary justifies them.
-
-## Trade-offs
-
-Microfrontends buy independent deploys and pay for version coordination, performance and contracts. A modular monolith stays simpler until the team can no longer release together.
-
-## Outcome
-
-Module boundaries that can be tested and changed, with an explicit choice between a modular monolith, multizone and microfrontends.
-
 ## Component Composition and Advanced Modularity
 
 Scalability in modern UI development relies on establishing strict architectural boundaries in client-side code. The traditional distinction between *Smart* and *Dumb* components evolves towards domain-oriented design patterns and strict composition using advanced TypeScript typing.
