@@ -1,3 +1,4 @@
+---
 title: "Arquitectura de Sistemas Frontend Modernos"
 description: "Patrones avanzados de composición de componentes, gestión de estado, eventos desacoplados, micro-frontends, PWAs y estrategias de testing en frontend."
 chapter: frontend
@@ -9,6 +10,7 @@ tags:
   - TypeScript
 published: true
 ```
+---
 ## Composición de componentes y modularidad avanzada
 
 La escalabilidad en el desarrollo de interfaces modernas depende de la capacidad de establecer límites arquitectónicos estrictos en el código del cliente. La distinción tradicional entre componentes *Smart* (con lógica y estado) y *Dumb* (puramente presentacionales) evoluciona hacia patrones de diseño orientados a dominios y composición estricta mediante tipado avanzado en TypeScript.

@@ -1,3 +1,4 @@
+---
 title: "Modern Frontend Systems Architecture"
 description: "Advanced component composition patterns, state management, decoupled events, micro-frontends, PWAs, and frontend testing strategies."
 chapter: frontend
@@ -9,6 +10,7 @@ tags:
   - TypeScript
 published: true
 ```
+---
 ## Component Composition and Advanced Modularity
 
 Scalability in modern UI development relies on establishing strict architectural boundaries in client-side code. The traditional distinction between *Smart* and *Dumb* components evolves towards domain-oriented design patterns and strict composition using advanced TypeScript typing.
