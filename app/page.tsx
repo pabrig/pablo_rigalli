@@ -32,9 +32,9 @@ export default function HomePage() {
       <Panel className="bg-canvas">
         <BlogTeaser posts={posts} />
       </Panel>
-      <Panel className="bg-panel">
+      {/* <Panel className="bg-panel">
         <DocsTeaser manual={manual} />
-      </Panel>
+      </Panel> */}
       <Panel className="bg-canvas">
         <Contact />
         <Footer />
