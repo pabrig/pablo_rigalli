@@ -9,7 +9,6 @@ tags:
   - React
   - TypeScript
 published: true
-```
 ---
 ## Component Composition and Advanced Modularity
 
