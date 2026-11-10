@@ -1,6 +1,5 @@
 "use client";
 
-import type { ReactElement, ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Link from "next/link";
@@ -22,19 +21,11 @@ const components: Components = {
       </a>
     );
   },
-  h2: ({ children, id }) => {
-    const label = headingLabel(children)
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .trim()
-      .toLowerCase();
-    const adr = ADR_HEADINGS.has(label);
-    return (
-      <h2 id={id} className={adr ? "blog-h2 adr-h2" : "blog-h2"}>
-        {children}
-      </h2>
-    );
-  },
+  h2: ({ children, id }) => (
+    <h2 id={id} className="blog-h2">
+      {children}
+    </h2>
+  ),
   h3: ({ children, id }) => (
     <h3 id={id} className="blog-h3">
       {children}
@@ -62,26 +53,8 @@ const components: Components = {
       </code>
     );
   },
-  pre: ({ children }) => <pre className="blog-pre">{children}</pre>,
-  table: ({ children }) => (
-    <div className="blog-table-wrap">
-      <table className="blog-table">{children}</table>
-    </div>
-  ),
-  th: ({ children }) => <th className="blog-th">{children}</th>,
-  td: ({ children }) => <td className="blog-td">{children}</td>
+  pre: ({ children }) => <pre className="blog-pre">{children}</pre>
 };
-
-function headingLabel(children: ReactNode): string {
-  if (typeof children === "string" || typeof children === "number") return String(children);
-  if (Array.isArray(children)) return children.map(headingLabel).join("");
-  if (children && typeof children === "object" && "props" in children) {
-    return headingLabel((children as ReactElement).props.children);
-  }
-  return "";
-}
-
-const ADR_HEADINGS = new Set(["context", "contexto", "decision", "decisión", "trade-offs", "tradeoffs", "outcome", "resultado"]);
 
 type MdNode = {
   type?: string;

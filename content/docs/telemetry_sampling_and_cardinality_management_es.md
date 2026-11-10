@@ -11,22 +11,6 @@ tags:
 published: true
 ---
 
-## Contexto
-
-En un sistema distribuido no se depura con logs locales. La transacción cruza servicios y, sin contexto, la telemetría no se puede unir.
-
-## Decisión
-
-Estandarizar trazas, métricas y logs con OpenTelemetry, propagar `traceparent` (W3C), elegir sampling head o tail a conciencia, y controlar la cardinalidad.
-
-## Trade-offs
-
-El tail sampling ve el error completo y cuesta buffer. El head sampling es barato y puede perder justo el request que falló. Una cardinalidad alta vuelve inutilizable la serie temporal.
-
-## Resultado
-
-Una traza correlacionada de punta a punta, con un volumen de telemetría que el equipo puede pagar y leer en un incidente.
-
 ## Pilares de la observabilidad y propagación de contexto
 
 En arquitecturas de sistemas distribuidos y microservicios, la observabilidad es la capacidad de inferir el estado interno de un sistema a partir de las salidas de telemetría que este emite. La base fundamental para lograr trazabilidad a través de múltiples fronteras de red consiste en desatar la telemetría de las instancias individuales mediante OpenTelemetry (OTel), estandarizando las APIs y los SDKs de recolección.

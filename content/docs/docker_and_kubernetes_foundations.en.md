@@ -11,22 +11,6 @@ tags:
 published: true
 ---
 
-## Context
-
-"It works on my machine" is a difference in runtime, libraries and OS between local, CI and production.
-
-## Decision
-
-Package with Docker and multi-stage images, and orchestrate with Kubernetes when more than one service needs scaling, restarts and resource limits.
-
-## Trade-offs
-
-Containers buy reproducibility and add operational surface. Kubernetes is justified with several services and a real resilience need. For a single process, it is extra platform cost.
-
-## Outcome
-
-The same artifact from the laptop to production, with resource limits and restarts that do not depend on one specific machine.
-
 ## Context and the Packaging Problem
 
 Modern software engineering requires guaranteed reproducibility across development, testing, and production environments. The classic "it works on my machine" issue arises when host operating system dependencies, shared libraries, or runtime versions differ between a developer's local machine and the deployment target.

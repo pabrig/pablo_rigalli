@@ -8,7 +8,6 @@ import { BlogProse } from "./BlogProse";
 import { BlogShell } from "./BlogShell";
 import { BlogReadMore } from "./BlogReadMore";
 import { BlogReadingProgress } from "./BlogReadingProgress";
-import type { RelatedLink } from "@/lib/paths";
 
 function formatDate(date: string, lang: "es" | "en") {
   const d = new Date(`${date}T12:00:00`);
@@ -29,12 +28,10 @@ function authorInitials(name: string) {
 
 export function BlogArticle({
   post,
-  morePosts,
-  relatedNotes = []
+  morePosts
 }: {
   post: BlogPost;
   morePosts: BlogPostMeta[];
-  relatedNotes?: RelatedLink[];
 }) {
   const { lang, t } = useCopy();
   const b = t.blog;
@@ -90,24 +87,9 @@ export function BlogArticle({
             ) : null}
           </header>
 
-          <div className="blog-body mt-10 min-w-0 md:mt-12">
+          <div className="blog-body mt-10 md:mt-12">
             <BlogProse markdown={post.body[lang]} />
           </div>
-
-          {relatedNotes.length > 0 ? (
-            <aside className="mt-12 border-t border-line pt-6">
-              <p className="text-[11px] uppercase tracking-[0.22em] text-soft">{b.relatedNotes[lang]}</p>
-              <ul className="mt-3 space-y-2">
-                {relatedNotes.map((item) => (
-                  <li key={item.href}>
-                    <Link href={item.href} className="font-serif text-lg leading-snug text-ink transition hover:text-accent">
-                      {item.title[lang]}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </aside>
-          ) : null}
 
           <BlogReadMore posts={morePosts} />
         </article>

@@ -11,22 +11,6 @@ tags:
 published: true
 ---
 
-## Context
-
-If the domain depends on the ORM or the framework, every infrastructure change drags business logic with it and slows the tests down.
-
-## Decision
-
-Isolate the core behind inbound and outbound ports. Adapters — HTTP, database, queues — live outside and translate DTOs without leaking into the domain.
-
-## Trade-offs
-
-More types and mapping at the edge. In return, a use case is tested without infrastructure, and an adapter can change without rewriting rules.
-
-## Outcome
-
-A domain that survives a framework change, with an explicit contract between business rules and infrastructure.
-
 ## Filosofía y separación de capas en Hexagonal
 
 Hexagonal architecture (also known as Ports and Adapters), popularized by Alistair Cockburn, aims to isolate the core business logic (*Core Domain*) from external technical details such as databases, web frameworks, message queues, or user interfaces. In traditional layered designs tightly coupled to frameworks, business logic frequently ends up depending on ORMs or infrastructure details, hindering unit testing and causing premature obsolescence when frameworks evolve.

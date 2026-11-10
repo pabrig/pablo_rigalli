@@ -1,8 +1,7 @@
 import { redirect } from "next/navigation";
 import type { Metadata } from "next";
 import { getManual } from "@/lib/docs";
-import { defaultOgImage, SITE_URL } from "@/lib/blog/og";
-import { noteHref } from "@/lib/paths";
+import { SITE_URL } from "@/lib/blog/og";
 
 export function generateMetadata(): Metadata {
   const manual = getManual();
@@ -12,17 +11,10 @@ export function generateMetadata(): Metadata {
     openGraph: {
       title: manual.title.es,
       description: manual.description.es,
-      url: `${SITE_URL}/notes`,
+      url: `${SITE_URL}/docs`,
       siteName: "Pablo Rigalli",
       locale: "es_AR",
-      type: "website",
-      images: [defaultOgImage(manual.title.es)]
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: manual.title.es,
-      description: manual.description.es,
-      images: [defaultOgImage(manual.title.es).url]
+      type: "website"
     }
   };
 }
@@ -30,11 +22,11 @@ export function generateMetadata(): Metadata {
 export default function DocsIndexPage() {
   const first = getManual().pages[0];
   if (!first) return <DocsEmpty />;
-  redirect(noteHref(first.slug));
+  redirect(`/docs/${first.slug}`);
 }
 
 function DocsEmpty() {
   return (
-    <p className="text-muted">Las notas todavía no tienen secciones.</p>
+    <p className="text-muted">El manual todavía no tiene secciones.</p>
   );
 }

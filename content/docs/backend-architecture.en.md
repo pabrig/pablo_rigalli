@@ -13,22 +13,6 @@ tags:
 published: true
 ---
 
-## Context
-
-A backend coupled to its framework or database becomes slow to test and brittle when transport, cache or a provider has to change.
-
-## Decision
-
-Separate domain and infrastructure, design APIs with stable contracts, and treat latency, cache and resilience as part of the design.
-
-## Trade-offs
-
-More layers and mapping up front. Less rewriting when the database, the protocol or the traffic changes.
-
-## Outcome
-
-A backend whose domain is tested on its own, and that runs under load with explicit failure paths.
-
 ## Context and the Backend Design Problem
 
 In enterprise applications and high-traffic distributed systems, software complexity tends to grow non-linearly. Systems born with architectures tightly coupled to specific frameworks or database models end up suffering from operational friction: slow unit tests, difficulty migrating infrastructure components, and performance degradation under extreme loads.

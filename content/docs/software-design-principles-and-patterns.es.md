@@ -10,22 +10,6 @@ tags:
 published: true
 ---
 
-## Contexto
-
-El costo está en mantener y cambiar el código, no en la primera versión. Una abstracción demasiado temprana también es deuda.
-
-## Decisión
-
-Usar SOLID, KISS, DRY y YAGNI como restricciones de cambio, no como checklist. Elegir un patrón cuando el problema ya se repitió.
-
-## Trade-offs
-
-Menos abstracción ahora significa duplicación tolerable. Más abstracción ahora significa un costo de lectura que el equipo paga en cada cambio.
-
-## Resultado
-
-Diseño que acelera el cambio real del producto y frena la sobreingeniería.
-
 ## Contexto y el problema del diseño
 
 El costo real del desarrollo de software no reside en la escritura inicial del código, sino en su mantenimiento, lectura y evolución a lo largo del tiempo. En proyectos con ciclo de vida prolongado, una decisión de diseño apresurada o una abstracción forzada genera deuda técnica que ralentiza la velocidad de entrega del equipo.

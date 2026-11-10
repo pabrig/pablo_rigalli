@@ -64,13 +64,34 @@ function Terminal({ step, total, active }: { step: Step; total: number; active: 
         >
           <p className="flex gap-2">
             <span className="text-accent">❯</span>
-            <span className="text-ink">{step.command}</span>
+            <span className="text-ink">
+              {step.command.split("").map((char, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.01, delay: 0.1 + i * 0.016 }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </span>
           </p>
           <div className="mt-5 space-y-1.5">
-            {step.output.map((line) => (
-              <p key={line} className={line.startsWith("→") ? "text-soft" : "text-muted"}>
+            {step.output.map((line, i) => (
+              <motion.p
+                key={line}
+                initial={{ opacity: 0, x: -6 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{
+                  duration: 0.4,
+                  ease,
+                  delay: 0.25 + step.command.length * 0.016 + i * 0.18
+                }}
+                className={line.startsWith("→") ? "text-soft" : "text-muted"}
+              >
                 {line}
-              </p>
+              </motion.p>
             ))}
           </div>
         </motion.div>
@@ -95,24 +116,14 @@ export function Stack() {
   const steps = t.stack.steps;
   const [active, setActive] = useState(0);
   const listRef = useRef<HTMLOListElement>(null);
-  const lockRef = useRef(false);
   const { scrollYProgress } = useScroll({
     target: listRef,
     offset: ["start center", "end center"]
   });
 
   useMotionValueEvent(scrollYProgress, "change", (v) => {
-    if (lockRef.current) return;
     setActive(Math.min(steps.length - 1, Math.max(0, Math.floor(v * steps.length))));
   });
-
-  const pick = (index: number) => {
-    lockRef.current = true;
-    setActive(index);
-    window.setTimeout(() => {
-      lockRef.current = false;
-    }, 700);
-  };
 
   return (
     <section id="stack" className="relative py-28 md:py-40">
@@ -144,18 +155,12 @@ export function Stack() {
                   animate={{ opacity: active === i ? 1 : 0.35 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <h3 className="font-serif text-4xl italic md:text-6xl">
-                    <button type="button" onClick={() => pick(i)} className="text-left">
-                      {step.title[lang]}
-                    </button>
-                  </h3>
+                  <h3 className="font-serif text-4xl italic md:text-6xl">{step.title[lang]}</h3>
                   <p className="mt-4 max-w-md leading-relaxed text-muted">{step.body[lang]}</p>
                 </motion.div>
-                {active === i ? (
-                  <div className="mt-8 md:hidden">
-                    <Terminal step={step} total={steps.length} active={i} />
-                  </div>
-                ) : null}
+                <div className="mt-8 md:hidden">
+                  <Terminal step={step} total={steps.length} active={i} />
+                </div>
               </li>
             ))}
           </ol>

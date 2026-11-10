@@ -11,22 +11,6 @@ tags:
 published: true
 ---
 
-## Contexto
-
-"Funciona en mi máquina" es una diferencia de runtime, librerías y sistema entre local, CI y producción.
-
-## Decisión
-
-Empaquetar con Docker, imágenes multi-stage, y orquestar con Kubernetes cuando hay que escalar, reiniciar y gobernar recursos de más de un servicio.
-
-## Trade-offs
-
-Los contenedores dan reproducibilidad y suman superficie operativa. Kubernetes se justifica con varios servicios y necesidad de resiliencia. Para un solo proceso, es costo de plataforma de más.
-
-## Resultado
-
-El mismo artefacto desde el laptop hasta producción, con límites de recursos y reinicios que no dependen de una máquina concreta.
-
 ## Contexto y el problema del empaquetado
 
 El desarrollo moderno de software exige garantías de reproducibilidad entre entornos de desarrollo, pruebas y producción. El clásico dilema del "funciona en mi máquina" surge cuando las dependencias del sistema operativo, bibliotecas compartidas o versiones de runtime difieren entre la estación de trabajo del desarrollador y el servidor de despliegue.
