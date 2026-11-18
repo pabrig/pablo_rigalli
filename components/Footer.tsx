@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCopy } from "@/lib/language";
 
 export function Footer() {
@@ -10,7 +11,15 @@ export function Footer() {
       <p>
         © {new Date().getFullYear()} {profile.name}
       </p>
-      <p>{profile.location[lang]}</p>
+      <div className="flex items-center gap-6">
+        <Link
+          href="/qr"
+          className="transition hover:text-accent"
+        >
+          {lang === "es" ? "Compartir / QR" : "Share / QR"}
+        </Link>
+        <p>{profile.location[lang]}</p>
+      </div>
     </footer>
   );
 }

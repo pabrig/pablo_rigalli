@@ -1,8 +1,9 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { FiArrowUpRight } from "react-icons/fi";
+import { FiArrowUpRight, FiShare2 } from "react-icons/fi";
 import { useCopy } from "@/lib/language";
 import { bookingUrl, cvDownload } from "@/lib/links";
 import { Reveal } from "./Reveal";
@@ -61,6 +62,13 @@ export function Contact() {
           >
             {t.contact.downloadCv[lang]}
           </a>
+          <Link
+            href="/qr"
+            className="inline-flex items-center gap-2 rounded-full border border-line bg-glass px-6 py-3 text-[12px] font-medium uppercase tracking-[0.14em] transition hover:border-accent/40 hover:bg-glass-lift"
+          >
+            <FiShare2 className="text-sm" />
+            {lang === "es" ? "QR / Compartir" : "QR / Share"}
+          </Link>
           <a
             href={profile.linkedin}
             target="_blank"
